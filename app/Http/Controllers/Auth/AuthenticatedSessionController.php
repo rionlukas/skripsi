@@ -32,7 +32,8 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerate();
 
-        return redirect()->intended(RouteServiceProvider::HOME);
+        return $this->afterLogin();
+        // return redirect()->intended(RouteServiceProvider::HOME);
     }
 
     /**
@@ -50,5 +51,15 @@ class AuthenticatedSessionController extends Controller
         $request->session()->regenerateToken();
 
         return redirect('/');
+    }
+
+    public function afterLogin() {
+         //or if you have a bunch of redirection options
+        if (Auth::user()->hasRole('admin')) {
+            return redirect('admin');
+        }
+        else{
+            return redirect('dashboard');
+        }
     }
 }

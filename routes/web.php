@@ -18,7 +18,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/admin', [AdminController::class, 'index'])->name('admin.index')->middleware('role:admin');
+Route::get('/admin', [AdminController::class, 'index'])->name('admin.index')->middleware('role:admin')->name('admin');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
