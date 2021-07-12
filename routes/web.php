@@ -14,6 +14,12 @@ use App\Http\Controllers\AdminController;
 |
 */
 
+//contoh route
+// Route::view('/about', 'about');
+// Route::get('/', 'CoffeeController@index');
+// Route::view('/coffee/create', 'coffee.create');
+// Route::post('/coffee/store', 'CoffeeController@store')->name('coffee.store');
+
 Route::get('/', function () {
     return view('welcome');
 });
@@ -25,3 +31,10 @@ Route::get('/dashboard', function () {
 })->middleware(['auth'])->name('dashboard');
 
 require __DIR__.'/auth.php';
+
+//route stock
+Route::get('/owner/stock', 'StockController@index')->name('stock');
+
+//Route pembelian
+Route::get('/owner/pembelian', 'PembelianController@index')->name('pembelian');
+

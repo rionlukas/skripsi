@@ -28,9 +28,13 @@
             </header>
 
             <!-- Page Content -->
-            <main>
+            {{-- <main>
                 {{ $slot }}
-            </main>
+            </main> --}}
+
+            <div class="container" id="menu_container">
+                @yield('content')
+            </div>
         </div>
     </body>
 </html>
