@@ -15,7 +15,7 @@ class StockController extends Controller
     public function index()
     {
         $stocks = Stock::all();
-        return view('owner.stock', ['stocks' => $stocks]);
+        return view('owner.stock.index', ['stocks' => $stocks]);
     }
 
     /**

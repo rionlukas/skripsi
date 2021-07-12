@@ -34,7 +34,9 @@ require __DIR__.'/auth.php';
 
 //route stock
 Route::get('/owner/stock', 'StockController@index')->name('stock');
+Route::view('/owner/create', 'owner.stock.create');
 
 //Route pembelian
 Route::get('/owner/pembelian', 'PembelianController@index')->name('pembelian');
+
 
