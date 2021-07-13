@@ -9,6 +9,8 @@
 
 <h1><u>Stock</u></h1>
 
+<p> <a href="owner.add" class="btn btn-primary">Add Stock</a> </p>
+
     <table class="table">
         <thead class="table-borderless">
             <th>Kode Kain</th>

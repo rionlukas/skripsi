@@ -25,7 +25,7 @@ class StockController extends Controller
      */
     public function create()
     {
-        //
+        return view('owner.create');
     }
 
     /**

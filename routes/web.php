@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\StockController;
+use App\Http\Controllers\PembelianController;
 
 /*
 |--------------------------------------------------------------------------
@@ -35,6 +37,8 @@ require __DIR__.'/auth.php';
 //route stock
 Route::get('/owner/stock', 'StockController@index')->name('stock');
 
+//route add stock
+Route::get('/owner/create', 'StockController@create')->name('create');
+
 //Route pembelian
 Route::get('/owner/pembelian', 'PembelianController@index')->name('pembelian');
-
