@@ -15,4 +15,6 @@ class Stock extends Model
         'JenisKain',
         'Jumlah'
     ];
+
+    public $timestamps = false;
 }

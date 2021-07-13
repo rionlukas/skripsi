@@ -36,7 +36,19 @@ class StockController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // dd($request);
+        $request->validate([
+            'KodeKain' => 'required',
+            'NamaKain' => 'required', 
+            'JenisKain' => 'required', 
+            'Jumlah' => 'required', 
+          ]);
+        
+          $input = $request->all();
+        
+          $stock = Stock::create($input);
+
+          return redirect()->route('stock')->with('success', 'Kain baru berhasil ditambahkan');
     }
 
     /**
