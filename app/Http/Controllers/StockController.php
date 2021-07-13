@@ -93,6 +93,8 @@ class StockController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $stock = Stock::find($id);
+        $stock->delete();
+        return back()->with('success', 'data berhasil dihapus');
     }
 }

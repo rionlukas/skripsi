@@ -36,6 +36,7 @@ require __DIR__.'/auth.php';
 Route::get('/owner/stock', 'StockController@index')->name('stock');
 Route::view('/owner/create', 'owner.stock.create');
 Route::post('/owner/stock/insert', 'StockController@store')->name('stock_insert');
+Route::delete('/owner/stock/delete/{id}', 'StockController@destroy')->name('stock_destroy');
 
 
 //Route pembelian

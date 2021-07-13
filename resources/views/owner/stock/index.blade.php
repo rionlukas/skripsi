@@ -27,8 +27,17 @@
                     <td>{{ $stock->JenisKain }}</td>
                     <td>{{ $stock->Jumlah }}</td>
                     <td>
-                        <button class="btn btn-warning">Edit</button>
-                        <button class="btn btn-danger">Delete</button>
+                        <form action="{{ route('stock_destroy',$stock->id) }}" method="POST">
+ 
+                            {{-- <a class="btn btn-info btn-sm" href="{{ route('stock_show',$stock->id) }}">Show</a>
+         
+                            <a class="btn btn-primary btn-sm" href="{{ route('stock_edit',$stock->id) }}">Edit</a> --}}
+         
+                            @csrf
+                            @method('DELETE')
+         
+                            <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?')">Delete</button>
+                        </form>
                     </td>
             </tbody>
         @endforeach
