@@ -70,7 +70,9 @@ class StockController extends Controller
      */
     public function edit($id)
     {
-        //
+        $stock = Stock::findOrFail($id);
+
+        return view('owner.stock.index', ['stock' => $stock]);
     }
 
     /**
@@ -82,7 +84,16 @@ class StockController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'KodeKain' => 'required',
+            'NamaKain' => 'required', 
+            'JenisKain' => 'required', 
+            'Jumlah' => 'required',
+        ]);
+
+        $stock = Stock::find($id)->update($request->all());
+
+        return back()->with('Success', 'Data Telah Diperbaharui !');
     }
 
     /**

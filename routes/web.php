@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\StockController;
+use App\Http\Controllers\PembelianController;
 
 /*
 |--------------------------------------------------------------------------
@@ -36,6 +38,8 @@ require __DIR__.'/auth.php';
 Route::get('/owner/stock', 'StockController@index')->name('stock');
 Route::view('/owner/create', 'owner.stock.create');
 Route::post('/owner/stock/insert', 'StockController@store')->name('stock_insert');
+Route::get('/owner/stock/edit/{id}', 'StockController@edit')->name('stock_edit');
+Route::put('/owner/stock/update/{id}', 'StockController@update');
 Route::delete('/owner/stock/delete/{id}', 'StockController@destroy')->name('stock_destroy');
 
 
