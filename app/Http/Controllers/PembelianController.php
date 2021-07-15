@@ -17,4 +17,26 @@ class PembelianController extends Controller
 
         return view('owner.pembelian.acc')->with(compact('stocks'));
     }
+
+    public function create()
+    {
+        //
+    }
+
+    public function store(Request $request)
+    {
+        // dd($request);
+        $request->validate([
+            'KodeKain' => 'required',
+            'NamaKain' => 'required', 
+            'JenisKain' => 'required', 
+            'Jumlah' => 'required', 
+          ]);
+        
+          $input = $request->all();
+        
+          $stock = Stock::create($input);
+
+          return redirect()->route('stock')->with('success', 'Kain baru berhasil ditambahkan');
+    }
 }

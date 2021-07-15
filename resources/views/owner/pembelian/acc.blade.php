@@ -28,8 +28,8 @@
                     <td>
                         <form action="{{ route('stock_destroy',$stock->id) }}" method="POST">
                         
-                        <a class="btn btn-primary btn-sm" href="{{ route('stock_edit',$stock->id) }}">Disetujui</a> 
-                        <a class="btn btn-danger btn-sm" href="{{ route('stock_edit',$stock->id) }}">Tolak</a> 
+                        <a class="btn btn-success btn-sm" href="{{ route('pembelian',$stock->id) }}">Disetujui</a> 
+                        <a class="btn btn-danger btn-sm" href="{{ route('pembelian',$stock->id) }}">Tolak</a> 
                         
                         </form>
                       
