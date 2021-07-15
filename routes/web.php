@@ -39,11 +39,12 @@ Route::get('/owner/stock', 'StockController@index')->name('stock');
 Route::view('/owner/create', 'owner.stock.create');
 Route::post('/owner/stock/insert', 'StockController@store')->name('stock_insert');
 Route::get('/owner/stock/edit/{id}', 'StockController@edit')->name('stock_edit');
-Route::put('/owner/stock/update/{id}', 'StockController@update');
+Route::put('/owner/stock/update/{id}', 'StockController@update')->name('stock_update');
 Route::delete('/owner/stock/delete/{id}', 'StockController@destroy')->name('stock_destroy');
 
 
 //Route pembelian
-Route::get('/owner/pembelian', 'PembelianController@index')->name('pembelian');
+Route::get('/owner/pembelian', 'PembelianController@index')->name('pembelian_acc');
+Route::view('/owner/pembelian', 'owner.pembelian.create');
 
 

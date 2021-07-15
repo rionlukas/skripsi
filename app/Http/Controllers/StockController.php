@@ -72,7 +72,7 @@ class StockController extends Controller
     {
         $stock = Stock::findOrFail($id);
 
-        return view('owner.stock.index', ['stock' => $stock]);
+        return view('owner.stock.edit', ['stock' => $stock]);
     }
 
     /**
@@ -93,7 +93,7 @@ class StockController extends Controller
 
         $stock = Stock::find($id)->update($request->all());
 
-        return back()->with('Success', 'Data Telah Diperbaharui !');
+        return redirect()->route('stock')->with('Success', 'Data Telah Diperbaharui !');
     }
 
     /**

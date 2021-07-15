@@ -6,9 +6,9 @@
 @endsection
 
 @section('content')
-    <h1>Input Kain Baru</h1>
+    <h1>Halaman Pembelian</h1>
 
-    <form action="{{ route('stock_insert') }}" method="post">
+    <form action="{{ route('pembelian_acc') }}" method="post">
       @csrf
             <div class="mb-3">
               <label for="inputKodeKain" class="form-label">Kode Kain</label>
@@ -26,11 +26,21 @@
             </div>
 
             <div class="mb-3">
-              <label for="inputJumlah" class="form-label">Jumlah Dalam Roll</label>
-              <input type="number" class="form-control" id="inputJumlah" name="Jumlah">
+              <label for="inputSupplier" class="form-label">Supplier</label>
+              <input type="number" class="form-control" id="inputSupplier" name="Supplier">
             </div>
+
+            <div class="mb-3">
+              <label for="inputTanggal" class="form-label">Tanggal</label>
+              <input type="number" class="form-control" id="inputTanggal" name="Tanggal">
+            </div>
+
+            <div class="mb-3">
+              <label for="inputKeterangan" class="form-label">Keterangan</label>
+              <input type="textarea" class="form-control" id="inputKeterangan" name="Keterangan">
+            </div>
+
 
             <button type="submit" class="btn btn-primary">Submit</button>
     </form>
-
 @endsection

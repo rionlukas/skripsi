@@ -19,6 +19,7 @@ class CreateStocksTable extends Migration
             $table->string('NamaKain');
             $table->string('JenisKain');
             $table->integer('Jumlah');
+            $table->string('Status');
         });
     }
 

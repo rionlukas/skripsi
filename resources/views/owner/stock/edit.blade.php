@@ -9,7 +9,7 @@
 
     <h1>this is edit page</h1>
 
-    <form action="{{ route('stock_insert',$stock->id) }}" method="post">
+    <form action="{{ route('stock_update',$stock->id) }}" method="post">
       @csrf
       @method('PUT')
             <div class="mb-3">
@@ -28,8 +28,8 @@
             </div>
 
             <div class="mb-3">
-              <label for="inputJumlah" class="form-label">Jumlah</label>
-              <input type="number" class="form-control" id="inputJumlah" name="Jumlah" value="{{ $stock->JumlahKain }}">
+              <label for="inputJumlah" class="form-label">Jumlah Dalam Roll</label>
+              <input type="number" class="form-control" id="inputJumlah" name="Jumlah" value="{{ $stock->Jumlah }}">
             </div>
 
             <button type="submit" class="btn btn-success">Update</button>

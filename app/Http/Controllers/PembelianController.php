@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use DB;
 
 class PembelianController extends Controller
 {
@@ -10,6 +11,10 @@ class PembelianController extends Controller
 
     public function index()
     {
-        return view('owner.pembelian');
+        $stocks = DB::table('stocks')
+                ->where('status', '=', 'Belum Disetujui')
+                ->get();
+
+        return view('owner.pembelian.acc')->with(compact('stocks'));
     }
 }

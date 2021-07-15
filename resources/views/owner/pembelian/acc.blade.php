@@ -7,9 +7,7 @@
 
 @section('content')
 
-<h1><u>Stock</u></h1>
-
-    <a href="/owner/create" class="btn btn-info">Kain Baru</a>
+<h1><u>Persetujuan Pembelian</u></h1>
 
     <table class="table">
         <thead class="table-borderless">
@@ -17,7 +15,7 @@
             <th>Nama Kain</th>
             <th>Jenis Kain</th>
             <th>Jumlah Dalam Roll</th>
-            <th>Action</th>
+            <th>Aksi</th>
         </thead>
 
         @foreach ($stocks as $stock)
@@ -26,16 +24,13 @@
                     <td>{{ $stock->NamaKain }}</td>
                     <td>{{ $stock->JenisKain }}</td>
                     <td>{{ $stock->Jumlah }}</td>
-                    <td>{{ $stock->Status }}</td>
+                    
                     <td>
                         <form action="{{ route('stock_destroy',$stock->id) }}" method="POST">
                         
-                        <a class="btn btn-primary btn-sm" href="{{ route('stock_edit',$stock->id) }}">Edit</a> 
+                        <a class="btn btn-primary btn-sm" href="{{ route('stock_edit',$stock->id) }}">Disetujui</a> 
+                        <a class="btn btn-danger btn-sm" href="{{ route('stock_edit',$stock->id) }}">Tolak</a> 
                         
-                            @csrf
-                            @method('DELETE')
-
-                            <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?')">Delete</button>
                         </form>
                       
                     </td>
