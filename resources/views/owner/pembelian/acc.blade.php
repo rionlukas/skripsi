@@ -15,6 +15,7 @@
             <th>Nama Kain</th>
             <th>Jenis Kain</th>
             <th>Jumlah Dalam Roll</th>
+            <th>Status</th>
             <th>Aksi</th>
         </thead>
 
@@ -24,15 +25,13 @@
                     <td>{{ $stock->NamaKain }}</td>
                     <td>{{ $stock->JenisKain }}</td>
                     <td>{{ $stock->Jumlah }}</td>
+                    <td>{{ $stock->Status }}</td>
                     
                     <td>
-                        <form action="{{ route('stock_destroy',$stock->id) }}" method="POST">
-                        
-                        <a class="btn btn-success btn-sm" href="{{ route('pembelian',$stock->id) }}">Disetujui</a> 
-                        <a class="btn btn-danger btn-sm" href="{{ route('pembelian',$stock->id) }}">Tolak</a> 
-                        
+                        <form>
+                            <a class="btn btn-success btn-sm" href="{{ route('pembelian_approval',[$stock->id, 'Disetujui']) }}">Disetujui</a> 
+                            <a class="btn btn-danger btn-sm" href="{{ route('pembelian_approval',[$stock->id, 'Ditolak']) }}">Tolak</a>                       
                         </form>
-                      
                     </td>
             </tbody>
         @endforeach

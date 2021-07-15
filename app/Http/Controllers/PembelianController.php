@@ -12,7 +12,7 @@ class PembelianController extends Controller
     public function index()
     {
         $stocks = DB::table('stocks')
-                ->where('status', '=', 'Belum Disetujui')
+                ->where('Status', '=', 'Belum Disetujui')
                 ->get();
 
         return view('owner.pembelian.acc')->with(compact('stocks'));
@@ -37,6 +37,15 @@ class PembelianController extends Controller
         
           $stock = Stock::create($input);
 
-          return redirect()->route('stock')->with('success', 'Kain baru berhasil ditambahkan');
+          return redirect()->route('pembelian_acc')->with('success', 'Kain baru berhasil ditambahkan');
+    }
+
+    public function approval($id, $value)
+    {
+        $affected = DB::table('stocks')
+              ->where('id', 1)
+              ->update(['Status' => $value]);
+
+        return redirect()->route('pembelian_acc');
     }
 }

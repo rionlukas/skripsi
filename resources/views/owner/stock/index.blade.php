@@ -26,7 +26,6 @@
                     <td>{{ $stock->NamaKain }}</td>
                     <td>{{ $stock->JenisKain }}</td>
                     <td>{{ $stock->Jumlah }}</td>
-                    <td>{{ $stock->Status }}</td>
                     <td>
                         <form action="{{ route('stock_destroy',$stock->id) }}" method="POST">
                         

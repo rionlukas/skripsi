@@ -30,6 +30,11 @@
               <input type="number" class="form-control" id="inputJumlah" name="Jumlah">
             </div>
 
+            <div class="mb-3" hidden="true">
+              <label for="inputStatus" class="form-label">Status</label>
+              <input type="text" class="form-control" id="inputStatus" name="Status" value="Belum Disetujui">
+            </div>
+
             <button type="submit" class="btn btn-primary">Submit</button>
     </form>
 

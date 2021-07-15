@@ -36,7 +36,7 @@ class StockController extends Controller
      */
     public function store(Request $request)
     {
-        // dd($request);
+        //dd($request);
         $request->validate([
             'KodeKain' => 'required',
             'NamaKain' => 'required', 
