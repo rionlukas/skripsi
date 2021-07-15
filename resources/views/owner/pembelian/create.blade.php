@@ -8,7 +8,7 @@
 @section('content')
     <h1>Halaman Pembelian</h1>
 
-    <form action="{{ route('pembelian_acc') }}" method="post">
+    <form action="{{ route('pembelian_insert') }}" method="post">
       @csrf
             <div class="mb-3">
               <label for="inputKodeKain" class="form-label">Kode Kain</label>
@@ -45,6 +45,10 @@
               <input type="textarea" class="form-control" id="inputKeterangan" name="Keterangan">
             </div>
 
+            <div class="mb-3" hidden="true">
+              <label for="inputStatus" class="form-label">Status</label>
+              <input type="text" class="form-control" id="inputStatus" name="Status" value="Belum Disetujui">
+            </div>
 
             <button type="submit" class="btn btn-primary">Submit</button>
     </form>
