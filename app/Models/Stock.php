@@ -14,7 +14,10 @@ class Stock extends Model
         'NamaKain',
         'JenisKain',
         'Jumlah',
-        'Status'
+        'Supplier',
+        'Tanggal',
+        'Keterangan',
+        'Status',
     ];
 
     public $timestamps = false;

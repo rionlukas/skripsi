@@ -14,9 +14,10 @@ class AddKeteranganTanggalSupplierToStocksTable extends Migration
     public function up()
     {
         Schema::table('stocks', function (Blueprint $table) {
-            $table->string('Keterangan');
+
             $table->string('Supplier');
             $table->timestamp('Tanggal');
+            $table->string('Keterangan');
         });
     }
 

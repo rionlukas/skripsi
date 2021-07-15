@@ -31,13 +31,16 @@ class PembelianController extends Controller
             'NamaKain' => 'required', 
             'JenisKain' => 'required', 
             'Jumlah' => 'required', 
+            'Keterangan' => 'required', 
+            'Supplier' => 'required', 
+            'Tanggal' => 'required', 
           ]);
         
           $input = $request->all();
         
           $stock = Stock::create($input);
 
-          return redirect()->route('pembelian_acc')->with('success', 'Kain baru berhasil ditambahkan');
+          return redirect()->route('pembelian_acc')->with('success', 'Menunggu Acc');
     }
 
     public function approval($id, $value)

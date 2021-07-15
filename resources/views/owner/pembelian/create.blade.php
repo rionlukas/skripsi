@@ -26,13 +26,18 @@
             </div>
 
             <div class="mb-3">
-              <label for="inputSupplier" class="form-label">Supplier</label>
-              <input type="number" class="form-control" id="inputSupplier" name="Supplier">
+              <label for="inputJumlahKain" class="form-label">Jumlah Kain Dalam Roll</label>
+              <input type="number" class="form-control" id="inputJumlahKain" name="Jumlah">
             </div>
 
             <div class="mb-3">
+              <label for="inputSupplier" class="form-label">Supplier</label>
+              <input type="text" class="form-control" id="inputSupplier" name="Supplier">
+            </div>
+
+            <div class="mb-1">
               <label for="inputTanggal" class="form-label">Tanggal</label>
-              <input type="number" class="form-control" id="inputTanggal" name="Tanggal">
+              <input type="date" class="form-control" id="inputTanggal" name="Tanggal">
             </div>
 
             <div class="mb-3">

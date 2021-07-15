@@ -15,6 +15,9 @@
             <th>Nama Kain</th>
             <th>Jenis Kain</th>
             <th>Jumlah Dalam Roll</th>
+            <th>Supplier</th>
+            <th>Tanggal</th>
+            <th>Keterangan</th>
             <th>Status</th>
             <th>Aksi</th>
         </thead>
@@ -25,6 +28,9 @@
                     <td>{{ $stock->NamaKain }}</td>
                     <td>{{ $stock->JenisKain }}</td>
                     <td>{{ $stock->Jumlah }}</td>
+                    <td>{{ $stock->Supplier }}</td>
+                    <td>{{ $stock->Tanggal }}</td>
+                    <td>{{ $stock->Keterangan }}</td>
                     <td>{{ $stock->Status }}</td>
                     
                     <td>
