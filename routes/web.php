@@ -51,4 +51,3 @@ Route::get('/owner/pembelian/approve/{id}/{value}', 'PembelianController@approva
 
 
 
-
