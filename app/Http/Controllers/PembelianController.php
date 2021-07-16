@@ -41,7 +41,6 @@ class PembelianController extends Controller
           ]);
         
           $input = $request->all();
-        
           $stock = Pembelian::create($input);
 
           return back()->with('Success', 'Menunggu ACC');
@@ -52,27 +51,38 @@ class PembelianController extends Controller
         $dataPembelian = Pembelian::where('id', $id)->get();
         if ($value == 'Disetujui') {
             $KodeKain = '';
+            $NamaKain = '';
+            $JenisKain = '';
             $jumlah = 0;
+            $Supplier = '';
+            $Tanggal = '';
+            $Keterangan = '';
+            $Status = '';
+
 
             foreach ($dataPembelian as $item) {
                 $KodeKain = $item->KodeKain;
+                $NamaKain = $item->NamaKain;
+                $JenisKain = $item->JenisKain;
                 $jumlah = $item->Jumlah;
+                $Supplier = $item->Supplier;
+                $Tanggal = $item->Tanggal;
+                $Keterangan = $item->Keterangan;
+                $Status = $item->Status;
             }
 
-            $existingStock = Stock::where('KodeKain', $KodeKain)->get();
-          $jumlahExisting = 0;
-
-          foreach ($existingStock as $item) {
-              $jumlahExisting = $item->Jumlah;
-          }
-
-          $jumlahAkhir = $jumlahExisting - $jumlah;
-
-          $affected = DB::table('stocks')
-              ->where('KodeKain', $KodeKain)
-              ->update([
-                  'Jumlah' => $jumlahAkhir
-                ]);
+          DB::table('stocks')->insert([
+            [
+                'KodeKain' => $KodeKain, 
+                'NamaKain' => $NamaKain, 
+                'JenisKain' => $JenisKain, 
+                'Jumlah' => $jumlah, 
+                'Supplier' => $Supplier, 
+                'Tanggal' => $Tanggal, 
+                'Keterangan' => $Keterangan, 
+                'Status' => $Status, 
+            ]
+            ]);
 
           $updateStatusPembelian = DB::table('pembelians')
           ->where('id', $id)
