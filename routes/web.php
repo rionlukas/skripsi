@@ -45,12 +45,14 @@ Route::delete('/owner/stock/delete/{id}', 'StockController@destroy')->name('stoc
 
 //Route pembelian
 Route::get('/owner/pembelian', 'PembelianController@index')->name('pembelian_acc');
+Route::get('owner/pembelian/approved', 'PembelianController@approvedPembelian')->name('pembelian_approved');
 Route::view('/owner/pembelian/create', 'owner.pembelian.create');
 Route::post('/owner/pembelian/insert', 'PembelianController@store')->name('pembelian_insert');
 Route::get('/owner/pembelian/approve/{id}/{value}', 'PembelianController@approval')->name('pembelian_approval');
 
 //Route order
-Route::get('owner/order', 'OrderController@index');
+Route::get('owner/order', 'OrderController@index')->name('order_acc');
+Route::get('owner/order/approved', 'OrderController@approvedOrder')->name('order_approved');
 Route::view('/owner/order/create', 'owner.order.create');
 Route::post('/owner/order/insert', 'OrderController@store')->name('order_insert');
 Route::get('/owner/order/approve/{id}/{value}', 'OrderController@approval')->name('order_approval');

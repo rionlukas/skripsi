@@ -11,6 +11,10 @@
     <form action="{{ route('order_insert') }}" method="post">
       @csrf
             <div class="mb-3">
+              <label for="inputOrderID" class="form-label">Order ID</label>
+              <input type="text" class="form-control" id="inputOrderId" name="OrderId">
+            </div>
+            <div class="mb-3">
               <label for="inputNamaCustomer" class="form-label">Nama Customer</label>
               <input type="text" class="form-control" id="inputNamaCustomer" name="NamaCustomer">
             </div>

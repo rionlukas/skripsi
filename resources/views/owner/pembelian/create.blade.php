@@ -11,6 +11,11 @@
     <form action="{{ route('pembelian_insert') }}" method="post">
       @csrf
             <div class="mb-3">
+              <label for="inputTransactionId" class="form-label">ID Transaksi</label>
+              <input type="text" class="form-control" id="inputTransactionId" name="TransactionId">
+            </div>
+
+            <div class="mb-3">
               <label for="inputKodeKain" class="form-label">Kode Kain</label>
               <input type="text" class="form-control" id="inputKodeKain" name="KodeKain">
             </div>

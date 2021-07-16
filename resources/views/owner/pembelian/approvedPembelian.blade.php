@@ -11,6 +11,7 @@
 
     <table class="table">
         <thead class="table-borderless">
+            <th>ID Transaksi</th>
             <th>Kode Kain</th>
             <th>Nama Kain</th>
             <th>Jenis Kain</th>
@@ -24,6 +25,7 @@
 
         @foreach ($pembelians as $pembelian)
             <tbody>
+                    <td>{{ $pembelian->TransactionId }}</td>
                     <td>{{ $pembelian->KodeKain }}</td>
                     <td>{{ $pembelian->NamaKain }}</td>
                     <td>{{ $pembelian->JenisKain }}</td>
@@ -35,8 +37,7 @@
                     
                     <td>
                         <form>
-                            <a class="btn btn-success btn-sm" href="{{ route('pembelian_approval',[$pembelian->id, 'Disetujui']) }}">Disetujui</a> 
-                            <a class="btn btn-danger btn-sm" href="{{ route('pembelian_approval',[$pembelian->id, 'Ditolak']) }}">Tolak</a>                       
+                            <a class="btn btn-success btn-sm" href="#">Detail</a>                       
                         </form>
                     </td>
             </tbody>
