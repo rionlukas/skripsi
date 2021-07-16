@@ -44,9 +44,13 @@
 
               <a href="/owner/order/create" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Order</a>
 
+<<<<<<< HEAD
               <a href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">EOQ</a>
               
               <a href="{{ route('pembelian_acc') }}" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">ACC Order & Pembelian</a>
+=======
+              <a href="{{ route('pembelian_acc') }}" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">EOQ</a>
+>>>>>>> 375880af68e6adf5f5b07a2be2fc1869b8fda483
             </div>
           </div>
         </div>

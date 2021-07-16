@@ -55,4 +55,3 @@ Route::view('/owner/order/create', 'owner.order.create');
 Route::post('/owner/order/insert', 'OrderController@store')->name('order_insert');
 Route::get('/owner/order/approve/{id}/{value}', 'OrderController@approval')->name('order_approval');
 
-
