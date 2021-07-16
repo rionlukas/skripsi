@@ -48,7 +48,7 @@ class PembelianController extends Controller
     public function approval($id, $value)
     {
         $affected = DB::table('stocks')
-              ->where('id', 1)
+              ->where('id', $id)
               ->update(['Status' => $value]);
 
         return redirect()->route('pembelian_acc');
