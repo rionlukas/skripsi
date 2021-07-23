@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddHargaToOrdersTable extends Migration
+class CreateKainsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,11 @@ class AddHargaToOrdersTable extends Migration
      */
     public function up()
     {
-        Schema::table('orders', function (Blueprint $table) {
+        Schema::create('kains', function (Blueprint $table) {
+            $table->id();
+            $table->string('KodeKain');
+            $table->string('NamaKain');
+            $table->string('JenisKain');
             $table->integer('Harga');
         });
     }
@@ -25,8 +29,6 @@ class AddHargaToOrdersTable extends Migration
      */
     public function down()
     {
-        Schema::table('orders', function (Blueprint $table) {
-            //
-        });
+        Schema::dropIfExists('kains');
     }
 }

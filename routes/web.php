@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\StockController;
 use App\Http\Controllers\PembelianController;
+use App\Http\Controllers\KainController;
 
 /*
 |--------------------------------------------------------------------------
@@ -36,7 +37,7 @@ require __DIR__.'/auth.php';
 
 //route stock
 Route::get('/owner/stock', 'StockController@index')->name('stock');
-Route::view('/owner/create', 'owner.stock.create');
+Route::get('/owner/create', 'StockController@create')->name('stock_create');
 Route::post('/owner/stock/insert', 'StockController@store')->name('stock_insert');
 Route::get('/owner/stock/edit/{id}', 'StockController@edit')->name('stock_edit');
 Route::put('/owner/stock/update/{id}', 'StockController@update')->name('stock_update');
@@ -56,4 +57,8 @@ Route::get('owner/order/approved', 'OrderController@approvedOrder')->name('order
 Route::view('/owner/order/create', 'owner.order.create');
 Route::post('/owner/order/insert', 'OrderController@store')->name('order_insert');
 Route::get('/owner/order/approve/{id}/{value}', 'OrderController@approval')->name('order_approval');
+
+//Route kain
+Route::get('owner/kain', 'KainController@getAllOnlyData')->name('kain_master');
+
 

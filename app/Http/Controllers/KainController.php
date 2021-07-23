@@ -3,10 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Stock;
 use App\Models\Kain;
 
-class StockController extends Controller
+class KainController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,8 +14,14 @@ class StockController extends Controller
      */
     public function index()
     {
-        $stocks = Stock::all();
-        return view('owner.stock.index', ['stocks' => $stocks]);
+        $kains = Kain::all();
+        // return view('owner.stock.create', ['kains' => $kains]);
+    }
+
+    public function getAllOnlyData() 
+    {
+        $kains = Kain::all();
+        return $kains;
     }
 
     /**
@@ -26,8 +31,7 @@ class StockController extends Controller
      */
     public function create()
     {
-        $kains = Kain::all();
-        return view('owner.stock.create', ['kains' => $kains]);
+        //
     }
 
     /**
@@ -38,24 +42,7 @@ class StockController extends Controller
      */
     public function store(Request $request)
     {
-        //dd($request);
-        $request->validate([
-            'KodeKain' => 'required',
-            'NamaKain' => 'required', 
-            'JenisKain' => 'required', 
-            'Jumlah' => 'required', 
-          ]);
-
-          $request->merge([
-              'Keterangan' => '',
-              'Supplier' => ''
-          ]);
-        
-          $input = $request->all();
-        
-          $stock = Stock::create($input);
-
-          return redirect()->route('stock')->with('success', 'Kain baru berhasil ditambahkan');
+        //
     }
 
     /**
@@ -77,9 +64,7 @@ class StockController extends Controller
      */
     public function edit($id)
     {
-        $stock = Stock::findOrFail($id);
-
-        return view('owner.stock.edit', ['stock' => $stock]);
+        //
     }
 
     /**
@@ -91,16 +76,7 @@ class StockController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $request->validate([
-            'KodeKain' => 'required',
-            'NamaKain' => 'required', 
-            'JenisKain' => 'required', 
-            'Jumlah' => 'required',
-        ]);
-
-        $stock = Stock::find($id)->update($request->all());
-
-        return redirect()->route('stock')->with('Success', 'Data Telah Diperbaharui !');
+        //
     }
 
     /**
@@ -111,8 +87,6 @@ class StockController extends Controller
      */
     public function destroy($id)
     {
-        $stock = Stock::find($id);
-        $stock->delete();
-        return back()->with('success', 'data berhasil dihapus');
+        //
     }
 }
