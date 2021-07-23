@@ -33,7 +33,8 @@ class OrderController extends Controller
             'KodeKain' => 'required',
             'NamaKain' => 'required', 
             'JenisKain' => 'required', 
-            'Jumlah' => 'required', 
+            'Jumlah' => 'required',
+            'Harga' => 'required', 
             'Keterangan' => 'required',  
             'Tanggal' => 'required', 
           ]);
@@ -92,5 +93,16 @@ class OrderController extends Controller
 
         return view('owner.order.approvedOrder')->with(compact('orders'));
     }
+
+    public function show(){
+        
+        // return view('')
+    }
+
 }
+
+
+
+
+
 
