@@ -54,7 +54,7 @@ Route::get('/owner/pembelian/approve/{id}/{value}', 'PembelianController@approva
 //Route order
 Route::get('owner/order', 'OrderController@index')->name('order_acc');
 Route::get('owner/order/approved', 'OrderController@approvedOrder')->name('order_approved');
-Route::view('/owner/order/create', 'owner.order.create');
+Route::get('/owner/order/create', 'OrderController@create')->name('order_create');
 Route::post('/owner/order/insert', 'OrderController@store')->name('order_insert');
 Route::get('/owner/order/approve/{id}/{value}', 'OrderController@approval')->name('order_approval');
 

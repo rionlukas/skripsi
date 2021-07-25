@@ -37,7 +37,7 @@
                     
                     <td>
                         <form>
-                            <a class="btn btn-secondary btn-sm" href="#">Detail</a>                       
+                            <a class="btn btn-secondary btn-sm" href="/owner/order/nota">Detail</a>                       
                         </form>
                     </td>
             </tbody>

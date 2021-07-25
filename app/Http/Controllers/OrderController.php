@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Order;
 use App\Models\Stock;
+use App\Models\Kain;
 
 use DB;
 
@@ -21,7 +22,8 @@ class OrderController extends Controller
 
     public function create()
     {
-        //
+        $kains = Kain::all();
+        return view('owner.order.create', ['kains' => $kains]);
     }
 
     public function store(Request $request)
