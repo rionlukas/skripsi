@@ -49,6 +49,11 @@
               <input type="number" class="form-control" id="inputHarga" name="Harga">
             </div>
 
+            <div class="mb-3">
+              <label for="inputTotalHarga" class="form-label">Total Harga</label>
+              <input type="number" class="form-control" id="inputTotalHarga" name="TotalHarga">
+            </div>
+
             <div class="mb-1">
               <label for="inputTanggal" class="form-label">Tanggal Beli</label>
               <input type="date" class="form-control" id="inputTanggal" name="Tanggal">
@@ -95,6 +100,12 @@
             document.getElementById('inputNamaKain').value = dataMaster.filter(x => x.KodeKain == kk)[0].NamaKain;
             document.getElementById('inputJenisKain').value = dataMaster.filter(x => x.KodeKain == kk)[0].JenisKain;
             document.getElementById('inputHarga').value = dataMaster.filter(x => x.KodeKain == kk)[0].Harga;
+        });
+
+        $('#inputJumlahKain').change(function (e) {
+            var jumlah = this.value;
+            var Harga = document.getElementById('inputHarga').value;
+            document.getElementById('inputTotalHarga').value = jumlah*Harga;
         });
     
     </script>

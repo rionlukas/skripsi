@@ -17,6 +17,8 @@
             <th>Nama Kain</th>
             <th>Jenis Kain</th>
             <th>Jumlah Dalam Roll</th>
+            <th>Harga</th>
+            <th>Total Harga</th>
             <th>Tanggal</th>
             <th>Keterangan</th>
             <th>Status</th>
@@ -31,6 +33,8 @@
                     <td>{{ $order->NamaKain }}</td>
                     <td>{{ $order->JenisKain }}</td>
                     <td>{{ $order->Jumlah }}</td>
+                    <td>{{ $order->Harga }}</td>
+                    <td>{{ $order->TotalHarga }}</td>
                     <td>{{ $order->TanggalOrder }}</td>
                     <td>{{ $order->Keterangan }}</td>
                     <td>{{ $order->Status }}</td>

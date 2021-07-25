@@ -17,6 +17,8 @@ class Order extends Model
         'KodeKain',
         'JenisKain',
         'Jumlah',
+        'Harga',
+        'TotalHarga',
         'TanggalOrder',
         'Keterangan',
         'Status',

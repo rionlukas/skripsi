@@ -37,6 +37,7 @@ class OrderController extends Controller
             'JenisKain' => 'required', 
             'Jumlah' => 'required',
             'Harga' => 'required', 
+            'TotalHarga' => 'required', 
             'Keterangan' => 'required',  
             'Tanggal' => 'required', 
           ]);
