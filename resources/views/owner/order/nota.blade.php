@@ -7,43 +7,60 @@
 
 @section('content')
 
-<h1><u>Persetujuan Order</u></h1>
+<h1><u> Nota Pembayaran </u></h1>
 
-    <table class="table">
-        <thead class="table-borderless"> 
-            <th>Order ID</th>
-            <th>Nama Customer</th>
-            <th>Kode Kain</th>
-            <th>Nama Kain</th>
-            <th>Jenis Kain</th>
-            <th>Jumlah Dalam Roll</th>
-            <th>Harga</th>
-            <th>Tanggal</th>
-            <th>Keterangan</th>
-            <th>Status</th>
-            <th>Aksi</th>
-        </thead>
+<div class="mb-3">
+    <label for="inputOrderID" class="form-label">Order ID</label>
+    <input type="text" class="form-control" id="inputOrderId" name="OrderId" value={{$order->OrderId}}>
+  </div>
+  <div class="mb-3">
+    <label for="inputNamaCustomer" class="form-label">Nama Customer</label>
+    <input type="text" class="form-control" id="inputNamaCustomer" name="NamaCustomer">
+  </div>
 
-        @foreach ($orders as $order)
-            <tbody>
-                    <td>{{ $order->OrderId }}</td>
-                    <td>{{ $order->NamaCustomer }}</td>
-                    <td>{{ $order->KodeKain }}</td>
-                    <td>{{ $order->NamaKain }}</td>
-                    <td>{{ $order->JenisKain }}</td>
-                    <td>{{ $order->Jumlah }}</td>
-                    <td>{{ $order->Harga }}</td>
-                    <td>{{ $order->TanggalOrder }}</td>
-                    <td>{{ $order->Keterangan }}</td>
-                    <td>{{ $order->Status }}</td>
-                    
-                    <td>
-                        <form>
-                            <a class="btn btn-secondary btn-sm" href="/owner/order/nota">Print</a>                       
-                        </form>
-                    </td>
-            </tbody>
-        @endforeach
-    </table>
+  <div class="mb-3">
+    <label for="inputKodeKain" class="form-label">Kode Kain</label>
+    <input type="text" class="form-control" id="inputKodeKain" name="KodeKain">
+  </div>
+
+  <div class="mb-3" hidden=true id="div_namaKain">
+    <label for="inputNamaKain" class="form-label">Nama Kain</label>
+    <input type="text" class="form-control" id="inputNamaKain" name="NamaKain">
+  </div>
+
+  <div class="mb-3">
+    <label for="inputJenisKain" class="form-label">Jenis Kain</label>
+    <input type="text" class="form-control" id="inputJenisKain" name="JenisKain">
+  </div>
+
+  <div class="mb-3">
+    <label for="inputJumlahKain" class="form-label">Jumlah Kain Dalam Roll</label>
+    <input type="number" class="form-control" id="inputJumlahKain" name="Jumlah">
+  </div>
+
+  <div class="mb-3">
+    <label for="inputHarga" class="form-label">Harga</label>
+    <input type="number" class="form-control" id="inputHarga" name="Harga">
+  </div>
+
+  <div class="mb-3">
+    <label for="inputTotalHarga" class="form-label">Total Harga</label>
+    <input type="number" class="form-control" id="inputTotalHarga" name="TotalHarga">
+  </div>
+
+  <div class="mb-1">
+    <label for="inputTanggal" class="form-label">Tanggal Beli</label>
+    <input type="date" class="form-control" id="inputTanggal" name="Tanggal">
+  </div>
+
+  <div class="mb-3">
+    <label for="inputKeterangan" class="form-label">Keterangan</label>
+    <input type="textarea" class="form-control" id="inputKeterangan" name="Keterangan">
+  </div>
+
+  <div class="mb-3" hidden="true">
+    <label for="inputStatus" class="form-label">Status</label>
+    <input type="text" class="form-control" id="inputStatus" name="Status" value="Belum Disetujui">
+  </div>
         
 @endsection

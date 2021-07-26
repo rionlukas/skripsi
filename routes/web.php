@@ -54,12 +54,15 @@ Route::get('/owner/pembelian/approve/{id}/{value}', 'PembelianController@approva
 //Route order
 Route::get('owner/order', 'OrderController@index')->name('order_acc');
 Route::get('owner/order/approved', 'OrderController@approvedOrder')->name('order_approved');
-Route::view('/owner/order/nota', 'owner.order.nota');
+Route::get('/owner/order/nota/{kodeKain}', 'OrderController@show')->name('order_nota');
 Route::get('/owner/order/create', 'OrderController@create')->name('order_create');
 Route::post('/owner/order/insert', 'OrderController@store')->name('order_insert');
 Route::get('/owner/order/approve/{id}/{value}', 'OrderController@approval')->name('order_approval');
 
 //Route kain
 Route::get('owner/kain', 'KainController@getAllOnlyData')->name('kain_master');
+
+//Test
+Route::get('testing/order/nota/{kodeKain}', 'OrderController@testing');
 
 

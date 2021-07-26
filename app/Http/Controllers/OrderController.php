@@ -97,9 +97,17 @@ class OrderController extends Controller
         return view('owner.order.approvedOrder')->with(compact('orders'));
     }
 
-    public function show(){
+    public function show($KodeKain){
         
-        // return view('')
+        $order = Order::findOrFail($KodeKain);
+        // dd($order);
+
+        return view('owner.order.nota', ['order' => $order]);
+    }
+
+    public function testing($kodeKain) {
+        $order = Order::findOrFail($kodeKain);
+        return view('owner.order.nota')->with(compact('order'));
     }
 
 }
