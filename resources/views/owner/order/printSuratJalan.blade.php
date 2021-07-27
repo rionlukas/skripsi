@@ -21,30 +21,6 @@
 
 <h1><u>Surat Jalan</u></h1>
 
-    {{-- <table class="table">
-        <tr>
-            <thead class="table-borderless">
-                <th>Kode Kain</th>
-                <th>Nama Kain</th>
-                <th>Jumlah Dalam Roll</th>
-                <th>Harga</th>
-                <th>TotalHarga</th>
-                <th>Tanggal</th>
-            </thead>
-        </tr>
-
-        @foreach ($orders as $order)
-            <tbody>
-                    <td>{{ $order->KodeKain }}</td>
-                    <td>{{ $order->NamaKain }}</td>
-                    <td>{{ $order->Jumlah }}</td>
-                    <td>{{ $order->Harga }}</td>
-                    <td>{{ $order->TotalHarga }}</td>
-                    <td>{{ $order->TanggalOrder }}</td>
-            </tbody>
-        @endforeach --}}
-
-
         <table>
                 <tr>
                     <th>Kode Kain</th>
@@ -61,8 +37,8 @@
                         <td>{{ $order->NamaKain }}</td>
                         <td>{{ $order->Jumlah }}</td>
                         <td>{{ $order->Harga }}</td>
-                        <td>{{ $order->TotalHarga }}</td>
-                        <td>{{ $order->TanggalOrder }}</td>
+                        <td>{{ $order->Total }}</td>
+                        <td>{{ $order->Tanggal }}</td>
                 </tr>
             @endforeach
     </table>
