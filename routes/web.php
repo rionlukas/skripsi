@@ -61,11 +61,14 @@ Route::get('/owner/order/approve/{id}/{value}', 'OrderController@approval')->nam
 Route::get('/owner/surat_jalan', 'OrderController@pageSuratJalan')->name('order_surat_jalan');
 Route::get('/owner/order/all', 'OrderController@GetAllOrder');
 Route::post('/owner/surat_jalan/store', 'OrderController@createSuratJalan')->name('surat_jalan_insert');
+Route::get('/owner/surat_jalan/pdf', 'OrderController@printSuratJalan')->name('surat_jalan_print');
 
 //Route kain
 Route::get('owner/kain', 'KainController@getAllOnlyData')->name('kain_master');
 
 //Test
 Route::get('testing/order/nota/{kodeKain}', 'OrderController@testing');
+Route::get('testing/print', 'OrderController@testingPrint');
+
 
 

@@ -7,6 +7,7 @@ use App\Models\Order;
 use App\Models\Stock;
 use App\Models\Kain;
 use App\Models\SuratJalan;
+use PDF;
 
 use DB;
 
@@ -127,6 +128,20 @@ class OrderController extends Controller
         $input = $request->all();
         $stock = SuratJalan::create($input);
         return back()->with('Success', 'Surat Jalan Berhasil dibuat');
+    }
+
+    public function printSuratJalan()
+    {
+        $orders = SuratJalan::all();
+        view()->share('owner.order.printSuratJalan', $orders);
+        $pdf = PDF::loadView('owner.order.printSuratJalan', ['orders' => $orders]);
+        return $pdf->download('suratjalan.pdf');
+    }
+
+    public function testingPrint() 
+    {
+        $pdf = PDF::loadView('testingPrint');
+        return $pdf->download('testing.pdf');
     }
 
 }
