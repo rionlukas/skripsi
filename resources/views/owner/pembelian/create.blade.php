@@ -15,19 +15,29 @@
               <input type="text" class="form-control" id="inputTransactionId" name="TransactionId">
             </div>
 
-            <div class="mb-3">
+            {{-- <div class="mb-3">
               <label for="inputKodeKain" class="form-label">Kode Kain</label>
               <input type="text" class="form-control" id="inputKodeKain" name="KodeKain">
-            </div>
+            </div> --}}
 
             <div class="mb-3">
+              <label for="inputKodeKain" class="form-label">Nama Kain</label>
+              <select name="KodeKain" id="KodeKain" class="form-control">
+                <option value="">== Pilih Kain ==</option>
+                @foreach ($kains as $kain)
+                    <option value="{{ $kain->KodeKain }}">{{ $kain->NamaKain }}</option>
+                @endforeach
+              </select>
+            </div>
+
+            <div class="mb-3" hidden=true>
               <label for="inputNamaKain" class="form-label">Nama Kain</label>
               <input type="text" class="form-control" id="inputNamaKain" name="NamaKain">
             </div>
 
             <div class="mb-3">
               <label for="inputJenisKain" class="form-label">Jenis Kain</label>
-              <input type="text" class="form-control" id="inputJenisKain" name="JenisKain">
+              <input type="text" class="form-control" id="inputJenisKain" name="JenisKain" readonly=true>
             </div>
 
             <div class="mb-3">
@@ -57,4 +67,35 @@
 
             <button type="submit" class="btn btn-primary">Submit</button>
     </form>
+
+    <script>
+      window.onload = onPageLoaded();
+      function onPageLoaded() {
+          localStorage.clear();
+          GetAllKainData();
+      }
+
+      async function GetAllKainData() 
+      {
+        const data = await fetch("http://127.0.0.1:8000/owner/kain", {
+        method: "GET",
+        headers: {
+            "Content-Type": "application/json"
+        }
+        });
+
+          const dataProps = await data.json();
+          var rawData = JSON.stringify(dataProps);
+          localStorage.setItem('data', rawData);
+        }
+
+        
+        $('#KodeKain').change(function (e) {
+            var kk = this.value;
+            var dataMaster = JSON.parse(localStorage.data);
+            document.getElementById('inputNamaKain').value = dataMaster.filter(x => x.KodeKain == kk)[0].NamaKain;
+            document.getElementById('inputJenisKain').value = dataMaster.filter(x => x.KodeKain == kk)[0].JenisKain;
+        });
+    
+    </script>
 @endsection

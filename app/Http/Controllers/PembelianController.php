@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Stock;
 use App\Models\Pembelian;
+use App\Models\Kain;
 
 use DB;
 
@@ -23,7 +24,8 @@ class PembelianController extends Controller
 
     public function create()
     {
-        //
+        $kains = Kain::all();
+        return view('owner.pembelian.create', ['kains' => $kains]);
     }
 
     public function store(Request $request)
