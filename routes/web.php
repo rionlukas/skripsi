@@ -58,6 +58,9 @@ Route::get('/owner/order/nota/{kodeKain}', 'OrderController@show')->name('order_
 Route::get('/owner/order/create', 'OrderController@create')->name('order_create');
 Route::post('/owner/order/insert', 'OrderController@store')->name('order_insert');
 Route::get('/owner/order/approve/{id}/{value}', 'OrderController@approval')->name('order_approval');
+Route::get('/owner/surat_jalan', 'OrderController@pageSuratJalan')->name('order_surat_jalan');
+Route::get('/owner/order/all', 'OrderController@GetAllOrder');
+Route::post('/owner/surat_jalan/store', 'OrderController@createSuratJalan')->name('surat_jalan_insert');
 
 //Route kain
 Route::get('owner/kain', 'KainController@getAllOnlyData')->name('kain_master');

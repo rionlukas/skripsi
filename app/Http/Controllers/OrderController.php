@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Order;
 use App\Models\Stock;
 use App\Models\Kain;
+use App\Models\SuratJalan;
 
 use DB;
 
@@ -105,9 +106,27 @@ class OrderController extends Controller
         return view('owner.order.nota', ['order' => $order]);
     }
 
-    public function testing($kodeKain) {
-        $order = Order::where('KodeKain', $kodeKain)->get();
-        return view('owner.order.nota', ['order' => $order]);
+    public function GetAllOrder()
+    {
+        $orders = Order::all();     
+        return $orders;                                                       
+    }
+
+    public function pageSuratJalan()
+    {
+        $orders = Order::all();
+        return view('owner.order.suratJalan', compact('orders'));
+    }
+
+    public function createSuratJalan(Request $request)
+    {
+        $request->merge([
+            'JSONString' => ''
+        ]);
+        
+        $input = $request->all();
+        $stock = SuratJalan::create($input);
+        return back()->with('Success', 'Surat Jalan Berhasil dibuat');
     }
 
 }
