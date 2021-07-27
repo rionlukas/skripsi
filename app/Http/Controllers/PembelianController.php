@@ -73,18 +73,32 @@ class PembelianController extends Controller
                 $Status = $item->Status;
             }
 
-          DB::table('stocks')->insert([
-            [
-                'KodeKain' => $KodeKain, 
-                'NamaKain' => $NamaKain, 
-                'JenisKain' => $JenisKain, 
-                'Jumlah' => $jumlah, 
-                'Supplier' => $Supplier, 
-                'Tanggal' => $Tanggal, 
-                'Keterangan' => $Keterangan, 
-                'Status' => $Status, 
-            ]
-            ]);
+            $existingStock = Stock::where('KodeKain', $KodeKain)->get();
+
+            if (count($existingStock) == 0) {
+                  DB::table('stocks')->insert([
+                    [
+                        'KodeKain' => $KodeKain, 
+                        'NamaKain' => $NamaKain, 
+                        'JenisKain' => $JenisKain, 
+                        'Jumlah' => $jumlah, 
+                        'Supplier' => $Supplier, 
+                        'Tanggal' => $Tanggal, 
+                        'Keterangan' => $Keterangan, 
+                        'Status' => $Status, 
+                    ]
+                ]);
+            } 
+            else 
+            {
+                $existingJumlah = 0;
+                foreach ($existingStock as $item) {
+                    $existingJumlah = $item->Jumlah;
+                }
+                Stock::where('KodeKain', $KodeKain)->update([
+                    'Jumlah' => $existingJumlah + $jumlah
+                ]);
+            }
 
           $updateStatusPembelian = DB::table('pembelians')
           ->where('id', $id)
