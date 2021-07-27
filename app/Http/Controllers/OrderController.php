@@ -106,8 +106,8 @@ class OrderController extends Controller
     }
 
     public function testing($kodeKain) {
-        $order = Order::findOrFail($kodeKain);
-        return view('owner.order.nota')->with(compact('order'));
+        $order = Order::where('KodeKain', $kodeKain)->get();
+        return view('owner.order.nota', ['order' => $order]);
     }
 
 }
