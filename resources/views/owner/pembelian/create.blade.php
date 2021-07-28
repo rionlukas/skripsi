@@ -15,11 +15,6 @@
               <input type="text" class="form-control" id="inputTransactionId" name="TransactionId">
             </div>
 
-            {{-- <div class="mb-3">
-              <label for="inputKodeKain" class="form-label">Kode Kain</label>
-              <input type="text" class="form-control" id="inputKodeKain" name="KodeKain">
-            </div> --}}
-
             <div class="mb-3">
               <label for="inputKodeKain" class="form-label">Nama Kain</label>
               <select name="KodeKain" id="KodeKain" class="form-control">
@@ -28,6 +23,11 @@
                     <option value="{{ $kain->KodeKain }}">{{ $kain->NamaKain }}</option>
                 @endforeach
               </select>
+            </div>
+
+            <div class="mb-3">
+              <label for="inputStockQty" class="form-label">Stock Tersisa</label>
+              <input type="text" class="form-control" id="inputStockQty" name="StockRemaining" readonly=true>
             </div>
 
             <div class="mb-3" hidden=true>
@@ -83,7 +83,7 @@
             "Content-Type": "application/json"
         }
         });
-
+        
           const dataProps = await data.json();
           var rawData = JSON.stringify(dataProps);
           localStorage.setItem('data', rawData);
@@ -95,6 +95,7 @@
             var dataMaster = JSON.parse(localStorage.data);
             document.getElementById('inputNamaKain').value = dataMaster.filter(x => x.KodeKain == kk)[0].NamaKain;
             document.getElementById('inputJenisKain').value = dataMaster.filter(x => x.KodeKain == kk)[0].JenisKain;
+            document.getElementById('inputStockQty').value = dataMaster.filter(x => x.KodeKain == kk)[0].qty;
         });
     
     </script>

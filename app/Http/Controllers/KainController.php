@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Kain;
+use DB;
 
 class KainController extends Controller
 {
@@ -20,7 +21,8 @@ class KainController extends Controller
 
     public function getAllOnlyData() 
     {
-        $kains = Kain::all();
+        $kains = DB::select('SELECT a.*, IFNULL(b.Jumlah,0) AS qty from kains a
+                            LEFT JOIN stocks b ON a.KodeKain = b.KodeKain');
         return $kains;
     }
 
