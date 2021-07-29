@@ -66,6 +66,9 @@ Route::get('/owner/surat_jalan/pdf', 'OrderController@printSuratJalan')->name('s
 //Route kain
 Route::get('owner/kain', 'KainController@getAllOnlyData')->name('kain_master');
 
+//Route EOQ
+Route::view('/eoq', 'eoq');
+
 //Test
 Route::get('testing/order/nota/{kodeKain}', 'OrderController@testing');
 Route::get('testing/print', 'OrderController@testingPrint');
