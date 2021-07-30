@@ -44,6 +44,11 @@
             <input type="number" class="form-control" id="inputResultOrder" name="ResultOrder" readonly=true> 
         </div>
 
+        <div class="mb-3">
+            <label for="inputResultHari" class="form-label">Dilakukan Selama : </label>
+            <input type="number" class="form-control" id="inputResultHari" name="ResultHari" readonly=true> 
+        </div>
+
     <script>
 
         $('#btnHitung').click(function(e){
@@ -74,6 +79,7 @@
 
             var result = 0;
             var resultOrder = 0;
+            var resultHari = 0;
             var step1 = 0;
             var step2 = 0;
            
@@ -83,8 +89,10 @@
             step2 = step1 / (hargaPembelian * (biayaPenyimpanan / 100));
             result = Math.sqrt(step2);
             resultOrder = jmlUnit / result;
+            resultHari = 360 / resultOrder;
             $('#inputResult').val(result);
             $('#inputResultOrder').val(resultOrder);
+            $('#inputResultHari').val(resultHari);
 
         });
 
