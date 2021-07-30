@@ -72,6 +72,8 @@ Route::view('/eoq', 'eoq');
 //Test
 Route::get('testing/order/nota/{kodeKain}', 'OrderController@testing');
 Route::get('testing/print', 'OrderController@testingPrint');
+Route::get('/testing/create', 'OrderController@createTesting');
+Route::view('/testing/layouting', 'testing.layout');
 
 
 

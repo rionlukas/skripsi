@@ -144,6 +144,12 @@ class OrderController extends Controller
         return $pdf->download('testing.pdf');
     }
 
+    public function createTesting()
+    {
+        $kains = Kain::all();
+        return view('testing.create', ['kains' => $kains]);
+    }
+
 }
 
 
