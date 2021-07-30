@@ -20,7 +20,7 @@
         </div>
 
         <div class="mb-3">
-            <label for="inputHargaPembelian" class="form-label">Harga Pembelian</label>
+            <label for="inputHargaPembelian" class="form-label">Harga Pembelian Per Unit</label>
             <input type="number" class="form-control" id="inputHargaPembelian" name="HargaPembelian">
         </div>
 
@@ -35,8 +35,13 @@
         </div>
 
         <div class="mb-3">
-            <label for="inputResult" class="form-label">Hasil Perhitungan</label>
+            <label for="inputResult" class="form-label">Hasil Perhitungan EOQ</label>
             <input type="number" class="form-control" id="inputResult" name="Result" readonly=true> 
+        </div>
+
+        <div class="mb-3">
+            <label for="inputResultOrder" class="form-label">Dengan Jumlah Order Per Tahun Sebanyak : </label>
+            <input type="number" class="form-control" id="inputResultOrder" name="ResultOrder" readonly=true> 
         </div>
 
     <script>
@@ -68,13 +73,19 @@
             }
 
             var result = 0;
+            var resultOrder = 0;
             var step1 = 0;
             var step2 = 0;
+           
+
 
             step1 = 2 * jmlUnit * biayaPesanan;
             step2 = step1 / (hargaPembelian * (biayaPenyimpanan / 100));
             result = Math.sqrt(step2);
+            resultOrder = jmlUnit / result;
             $('#inputResult').val(result);
+            $('#inputResultOrder').val(resultOrder);
+
         });
 
         $('#btnReset').click(function() {

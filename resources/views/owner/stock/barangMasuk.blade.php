@@ -40,12 +40,12 @@
               <input type="text" class="form-control" id="inputStatus" name="Status" value="Belum Disetujui">
             </div>
 
-            <div class="mb-3">
+            {{-- <div class="mb-3" hidden=true>
               <label for="inputKeterangan" class="form-label">Keterangan</label>
               <input type="text" class="form-control" id="inputKeterangan" name="Keterangan" value="">
             </div>
 
-            {{-- <div class="mb-3" hidden=true>
+            <div class="mb-3" hidden=true>
               <label for="inputSupplier" class="form-label">Supplier</label>
               <input type="text" class="form-control" id="inputSupplier" name="Supplier" value="">
             </div> --}}
