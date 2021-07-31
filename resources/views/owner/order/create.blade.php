@@ -75,7 +75,7 @@
                 <div class="col-md">
                     <div class="mb-1">
                         <label for="inputTanggal" class="form-label">Tanggal Beli</label>
-                        <input type="date" class="form-control" id="inputTanggal" name="Tanggal[]">
+                        <input type="date" class="form-control inputTanggal" id="inputTanggal" name="Tanggal[]">
                     </div>
                 </div>
 
@@ -224,7 +224,7 @@
                         <div class="col-md">
                             <div class="mb-1">
                                 <label for="inputTanggal" class="form-label">Tanggal Beli</label>
-                                <input type="date" class="form-control" id="inputTanggal" name="Tanggal[]">
+                                <input type="date" class="form-control inputTanggal" id="inputTanggal" name="Tanggal[]">
                             </div>
                         </div>
 
@@ -273,21 +273,20 @@
             });
         }
 
-        $.fn.serializeObject = function()
-        {
-            var o = {};
-            var a = this.serializeArray();
-            $.each(a, function() {
-                if (o[this.name] !== undefined) {
-                    if (!o[this.name].push) {
-                        o[this.name] = [o[this.name]];
-                    }
-                    o[this.name].push(this.value || '');
-                } else {
-                    o[this.name] = this.value || '';
-                }
-            });
-            return o;
-        };
+        $(function(){
+          var dtToday = new Date();
+          
+          var month = dtToday.getMonth() + 1;
+          var day = dtToday.getDate();
+          var year = dtToday.getFullYear();
+          if(month < 10)
+              month = '0' + month.toString();
+          if(day < 10)
+              day = '0' + day.toString();
+          
+          var maxDate = year + '-' + month + '-' + day;
+          $('.inputTanggal').attr('min', maxDate);
+        });
+    
     </script>
 @endsection
