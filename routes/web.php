@@ -74,6 +74,8 @@ Route::get('testing/order/nota/{kodeKain}', 'OrderController@testing');
 Route::get('testing/print', 'OrderController@testingPrint');
 Route::get('/testing/create', 'OrderController@createTesting');
 Route::view('/testing/layouting', 'testing.layout');
+Route::post('/testing/order/store', 'OrderController@storeTesting')->name('testing_post_order');
+Route::post('/api/testing/order/store', 'OrderController@storeTesting')->name('testing_post_order');
 
 
 

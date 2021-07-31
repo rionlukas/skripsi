@@ -30,23 +30,35 @@ class OrderController extends Controller
 
     public function store(Request $request)
     {
-        //dd($request);
-        $request->validate([
-            'OrderId' => 'required',
-            'NamaCustomer' => 'required',
-            'KodeKain' => 'required',
-            'NamaKain' => 'required', 
-            'JenisKain' => 'required', 
-            'Jumlah' => 'required',
-            'Harga' => 'required', 
-            'TotalHarga' => 'required', 
-            'Keterangan' => 'required',  
-            'Tanggal' => 'required', 
-          ]);
+        $orderId = $request->OrderId;
+        $namaCustomer = $request->NamaCustomer;
+        $namaKain = $request->NamaKain;
+        $kodeKain = $request->KodeKain;
+        $jenisKain = $request->JenisKain;
+        $jumlah = $request->Jumlah;
+        $harga = $request->Harga;
+        $totalHarga = $request->TotalHarga;
+        $tglOrder = $request->Tanggal;
+        $keterangan = $request->Keterangan;
+        $status = $request->Status;
         
-          $input = $request->all();
-        
-          $stock = Order::create($input);
+        for ($i=0; $i < Count($request->OrderId); $i++) { 
+            $dataSave = [
+                'OrderId' => $orderId[$i],
+                'NamaCustomer' => $namaCustomer[$i],
+                'NamaKain' => $namaKain[$i],
+                'KodeKain' => $kodeKain[$i],
+                'JenisKain' => $jenisKain[$i],
+                'Jumlah' => $jumlah[$i],
+                'Harga' => $harga[$i],
+                'TotalHarga' => $totalHarga[$i],
+                'TanggalOrder' => $tglOrder[$i],
+                'Keterangan' => $keterangan[$i],
+                'Status' => $status[$i],
+            ];
+
+            Order::create($dataSave);
+        }
 
           return back()->with('Success', 'Menunggu ACC');
     }
@@ -148,6 +160,39 @@ class OrderController extends Controller
     {
         $kains = Kain::all();
         return view('testing.create', ['kains' => $kains]);
+    }
+
+    public function storeTesting(Request $request)
+    {
+        $orderId = $request->OrderId;
+        $namaCustomer = $request->NamaCustomer;
+        $namaKain = $request->NamaKain;
+        $kodeKain = $request->KodeKain;
+        $jenisKain = $request->JenisKain;
+        $jumlah = $request->Jumlah;
+        $harga = $request->Harga;
+        $totalHarga = $request->TotalHarga;
+        $tglOrder = $request->Tanggal;
+        $keterangan = $request->Keterangan;
+        $status = $request->Status;
+        
+        for ($i=0; $i < Count($request->OrderId); $i++) { 
+            $dataSave = [
+                'OrderId' => $orderId[$i],
+                'NamaCustomer' => $namaCustomer[$i],
+                'NamaKain' => $namaKain[$i],
+                'KodeKain' => $kodeKain[$i],
+                'JenisKain' => $jenisKain[$i],
+                'Jumlah' => $jumlah[$i],
+                'Harga' => $harga[$i],
+                'TotalHarga' => $totalHarga[$i],
+                'TanggalOrder' => $tglOrder[$i],
+                'Keterangan' => $keterangan[$i],
+                'Status' => $status[$i],
+            ];
+
+            Order::create($dataSave);
+        }
     }
 
 }

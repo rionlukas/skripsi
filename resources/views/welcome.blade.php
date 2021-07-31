@@ -29,6 +29,7 @@
                     <a href="{{ url('/admin') }}" class="text-sm text-gray-700 underline">Admin</a>
                         @endrole
                     <a href="{{ url('/dashboard') }}" class="text-sm text-gray-700 underline">Dashboard</a>
+                    <a href="{{ url('/owner/stock') }}" class="text-sm text-gray-700 underline">Stock</a>
                     @else
                         <a href="{{ route('login') }}" class="text-sm text-gray-700 underline">Log in</a>
 
