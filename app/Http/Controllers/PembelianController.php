@@ -30,22 +30,34 @@ class PembelianController extends Controller
 
     public function store(Request $request)
     {
-        // dd($request);
-        $request->validate([
-            'TransactionId' => 'required',
-            'KodeKain' => 'required',
-            'NamaKain' => 'required', 
-            'JenisKain' => 'required', 
-            'Jumlah' => 'required', 
-            'Keterangan' => 'required', 
-            'Supplier' => 'required', 
-            'Tanggal' => 'required', 
-          ]);
-        
-          $input = $request->all();
-          $stock = Pembelian::create($input);
+        $trxId = $request->TransactionId;
+        $supplier = $request->Supplier;
+        $namaKain = $request->NamaKain;
+        $kodeKain = $request->KodeKain;
+        $jenisKain = $request->JenisKain;
+        $jumlah = $request->Jumlah;
+        $tgl = $request->Tanggal;
+        $keterangan = $request->Keterangan;
+        $status = $request->Status;
 
-          return back()->with('Success', 'Menunggu ACC');
+        for ($i=0; $i < Count($request->TransactionId); $i++) { 
+            $dataSave = [
+                'TransactionId' => $trxId[$i],
+                'Supplier' => $supplier[$i],
+                'NamaKain' => $namaKain[$i],
+                'KodeKain' => $kodeKain[$i],
+                'JenisKain' => $jenisKain[$i],
+                'Jumlah' => $jumlah[$i],
+                'TanggalPembelian' => $tgl[$i],
+                'Keterangan' => $keterangan[$i],
+                'Status' => $status[$i],
+                'JumlahAcc' => 0
+            ];
+
+            Pembelian::create($dataSave);
+        }
+
+        return back()->with('Success', 'Menunggu ACC');
     }
 
     public function approval($id, $value)

@@ -136,6 +136,7 @@
         });
 
           const dataProps = await data.json();
+          console.log(dataProps);
           var rawData = JSON.stringify(dataProps);
           localStorage.setItem('data', rawData);
         }

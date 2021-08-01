@@ -2,90 +2,105 @@
 
 @section('section_menu')
     @parent
-
-@endsection
-
-@section('content')
+    
+    @endsection
+    
+    @section('content')
     <h1>Halaman Pembelian</h1>
-
+    
     <form action="{{ route('pembelian_insert') }}" method="post">
-      @csrf
-            <div class="mb-3">
-              <label for="inputTransactionId" class="form-label">ID Transaksi</label>
-              <input type="text" class="form-control" id="inputTransactionId" name="TransactionId">
-            </div>
-
-            <div class="mb-3">
-              <label for="inputKodeKain" class="form-label">Nama Kain</label>
-              <select name="KodeKain" id="KodeKain" class="form-control">
-                <option value="">== Pilih Kain ==</option>
-                @foreach ($kains as $kain)
-                    <option value="{{ $kain->KodeKain }}">{{ $kain->NamaKain }}</option>
-                @endforeach
-              </select>
-            </div>
-
-            <div class="mb-3">
-              <label for="inputStockQty" class="form-label">Stock Tersisa</label>
-              <input type="text" class="form-control" id="inputStockQty" name="StockRemaining" readonly=true>
-            </div>
-
-            <div class="mb-3" hidden=true>
-              <label for="inputNamaKain" class="form-label">Nama Kain</label>
-              <input type="text" class="form-control" id="inputNamaKain" name="NamaKain">
-            </div>
-
-            <div class="mb-3">
-              <label for="inputJenisKain" class="form-label">Jenis Kain</label>
-              <input type="text" class="form-control" id="inputJenisKain" name="JenisKain" readonly=true>
-            </div>
-
-            <div class="mb-3">
-              <label for="inputJumlahKain" class="form-label">Jumlah Kain Dalam Roll</label>
-              <input type="number" class="form-control" id="inputJumlahKain" name="Jumlah">
-            </div>
-
-            <div class="mb-3">
-              <label for="inputSupplier" class="form-label">Supplier</label>
-              <input type="text" class="form-control" id="inputSupplier" name="Supplier">
-            </div>
-
-            <div class="mb-1">
-              <label for="inputTanggal" class="form-label">Tanggal</label>
-              <input type="date" class="form-control" id="inputTanggal" name="Tanggal">
-            </div>
-
-            <div class="mb-3">
-              <label for="inputKeterangan" class="form-label">Keterangan</label>
-              <input type="textarea" class="form-control" id="inputKeterangan" name="Keterangan">
-            </div>
-
-            <div class="mb-3" hidden="true">
-              <label for="inputStatus" class="form-label">Status</label>
-              <input type="text" class="form-control" id="inputStatus" name="Status" value="Belum Disetujui">
-            </div>
-
-            <hr style="width:100%;text-align:left;margin-left:0"></div> 
-            <button class="btn btn-info float-right mb-8" id="btnNewLine" type="button" id="btnNewLine" onclick="newLine()">Tambah</button>
-            </div>
-
-            <div class="container-hidden">
-            <div class="col-md">
-                <div class="mb-3" hidden=true id="div_namaKain">
-                    <label for="inputNamaKain" class="form-label">Nama Kain</label>
-                    <input type="text" class="form-control" id="inputNamaKain" name="NamaKain[]">
+        @csrf
+        <div class="multiContent">
+            <div class="row">
+                <div class="col-md">
+                    <div class="mb-3">
+                        <label for="inputTransactionId" class="form-label">ID Transaksi</label>
+                        <input type="text" class="form-control" id="inputTransactionId" name="TransactionId[]">
+                    </div>
+                </div>
+                
+                <div class="col-md">
+                    <div class="mb-3">
+                        <label for="inputKodeKain" class="form-label">Nama Kain</label>
+                        <select name="KodeKain[]" id="KodeKain" class="form-control">
+                            <option value="">== Pilih Kain ==</option>
+                            @foreach ($kains as $kain)
+                            <option value="{{ $kain->KodeKain }}">{{ $kain->NamaKain }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="col-md">
+                    <div class="mb-3">
+                        <label for="inputStockQty" class="form-label">Stock Tersisa</label>
+                        <input type="text" class="form-control" id="inputStockQty" name="StockRemaining" readonly=true>
+                    </div>
                 </div>
             </div>
 
-            <div class="col-md">
-                <div class="mb-3" hidden="true">
-                    <label for="inputStatus" class="form-label">Status</label>
-                    <input type="text" class="form-control" id="inputStatus" name="Status[]" value="Belum Disetujui">
-                  </div>
+            <div class="row">
+                <div class="col-md">
+                    <div class="mb-3">
+                      <label for="inputJenisKain" class="form-label">Jenis Kain</label>
+                      <input type="text" class="form-control" id="inputJenisKain" name="JenisKain[]" readonly=true>
+                    </div>
+                </div>
+    
+                <div class="col-md">
+                    <div class="mb-3">
+                      <label for="inputJumlahKain" class="form-label">Jumlah Kain Dalam Roll</label>
+                      <input type="number" class="form-control" id="inputJumlahKain" name="Jumlah[]">
+                    </div>
+                </div>
+    
+                <div class="col-md">
+                    <div class="mb-3">
+                      <label for="inputSupplier" class="form-label">Supplier</label>
+                      <input type="text" class="form-control" id="inputSupplier" name="Supplier[]">
+                    </div>
+                </div>
             </div>
-        </div>
+    
+            <div class="row">
+                <div class="col-md">
+                    <div class="mb-1">
+                      <label for="inputTanggal" class="form-label">Tanggal</label>
+                      <input type="date" class="form-control inputTanggal" id="inputTanggal" name="Tanggal[]">
+                    </div>
+                </div>
+    
+                <div class="col-md">
+                    <div class="mb-3">
+                      <label for="inputKeterangan" class="form-label">Keterangan</label>
+                      <input type="textarea" class="form-control" id="inputKeterangan" name="Keterangan[]">
+                    </div>
+                </div>
+            </div> 
+            
+            <hr style="width:100%;text-align:left;margin-left:0"></div> 
+            <button class="btn btn-info float-right mb-8" id="btnNewLine"
+                type="button" id="btnNewLine" onclick="newLine()">Tambah</button>
+            
+            </div>
+                <div class="container-hidden">
+                    <div class="col-md">
+                        <div class="mb-3" hidden=true id="div_namaKain">
+                            <label for="inputNamaKain" class="form-label">Nama Kain</label>
+                            <input type="text" class="form-control" id="inputNamaKain" name="NamaKain[]">
+                        </div>
+                    </div>
+    
+                    <div class="col-md">
+                        <div class="mb-3" hidden="true">
+                            <label for="inputStatus" class="form-label">Status</label>
+                            <input type="text" class="form-control" id="inputStatus" name="Status[]" value="Belum Disetujui">
+                          </div>
+                    </div>
+                </div>
+            </div>
 
-            <button type="submit" class="btn btn-primary">Submit</button>
+            <button type="submit" class="btn btn-primary btn-lg btn-block mt-8 mb-4">Submit</button>
     </form>
 
     <script>
@@ -133,62 +148,69 @@
                         <div class="col-md">
                             <div class="mb-3">
                                 <label for="inputTransactionId" class="form-label">ID Transaksi</label>
-                                <input type="text" class="form-control" id="inputTransactionId" name="TransactionId[]">
+                                <input type="text" class="form-control inputTransactionId" id="inputTransactionId" name="TransactionId[]">
                             </div>
                         </div>
-
+                        
                         <div class="col-md">
                             <div class="mb-3">
                                 <label for="inputKodeKain" class="form-label">Nama Kain</label>
                                 <select name="KodeKain[]" id="KodeKain" class="form-control KodeKain">
-                                <option value="">== Pilih Kain ==</option>
-                                @foreach ($kains as $kain)
+                                    <option value="">== Pilih Kain ==</option>
+                                    @foreach ($kains as $kain)
                                     <option value="{{ $kain->KodeKain }}">{{ $kain->NamaKain }}</option>
-                                @endforeach
+                                    @endforeach
                                 </select>
+                            </div>
+                        </div>
+                        
+                        <div class="col-md">
+                            <div class="mb-3">
+                                <label for="inputStockQty" class="form-label">Stock Tersisa</label>
+                                <input type="text" class="form-control inputStockQty" id="inputStockQty" name="StockRemaining" readonly=true>
                             </div>
                         </div>
                     </div>
 
                     <div class="row">
-
                         <div class="col-md">
                             <div class="mb-3">
-                                <label for="inputJenisKain" class="form-label">Jenis Kain</label>
-                                <input type="text" class="form-control inputJenisKain" id="inputJenisKain" name="JenisKain[]" readonly=true>
+                            <label for="inputJenisKain" class="form-label">Jenis Kain</label>
+                            <input type="text" class="form-control inputJenisKain" id="inputJenisKain" name="JenisKain[]" readonly=true>
                             </div>
                         </div>
-
+            
                         <div class="col-md">
                             <div class="mb-3">
-                                <label for="inputStockQty" class="form-label">Stok Tersisa</label>
-                                <input type="text" class="form-control inputStockQty" id="inputStockQty" name="StockRemaining" readonly=true>
+                            <label for="inputJumlahKain" class="form-label">Jumlah Kain Dalam Roll</label>
+                            <input type="number" class="form-control inputJumlahKain" id="inputJumlahKain" name="Jumlah[]">
                             </div>
                         </div>
-
+            
                         <div class="col-md">
                             <div class="mb-3">
-                                <label for="inputJumlahKain" class="form-label">Jumlah Kain Dalam Roll</label>
-                                <input type="number" class="form-control inputJumlahKain" id="inputJumlahKain" name="Jumlah[]">
+                            <label for="inputSupplier" class="form-label">Supplier</label>
+                            <input type="text" class="form-control inputSupplier" id="inputSupplier" name="Supplier[]">
                             </div>
                         </div>
-
+                    </div>
+            
                     <div class="row">
-
                         <div class="col-md">
                             <div class="mb-1">
-                                <label for="inputTanggal" class="form-label">Tanggal Beli</label>
-                                <input type="date" class="form-control inputTanggal" id="inputTanggal" name="Tanggal[]">
+                            <label for="inputTanggal" class="form-label">Tanggal</label>
+                            <input type="date" class="form-control inputTanggal" id="inputTanggal" name="Tanggal[]">
                             </div>
                         </div>
-
+            
                         <div class="col-md">
                             <div class="mb-3">
-                                <label for="inputKeterangan" class="form-label">Keterangan</label>
-                                <input type="textarea" class="form-control" id="inputKeterangan" name="Keterangan[]">
+                            <label for="inputKeterangan" class="form-label">Keterangan</label>
+                            <input type="textarea" class="form-control inputKeterangan" id="inputKeterangan" name="Keterangan[]">
                             </div>
-                        </div>     
-                        
+                        </div>
+                    </div> 
+
                         <div class="col-md" hidden=true>
                             <div class="mb-3" id="div_namaKain">
                                 <label for="inputNamaKain" class="form-label">Nama Kain</label>
@@ -199,7 +221,7 @@
                         <div class="col-md" hidden=true>
                             <div class="mb-3">
                                 <label for="inputStatus" class="form-label">Status</label>
-                                <input type="text" class="form-control" id="inputStatus" name="Status[]" value="Belum Disetujui">
+                                <input type="text" class="form-control inputStatus" id="inputStatus" name="Status[]" value="Belum Disetujui">
                             </div>
                         </div>
                     </div>
