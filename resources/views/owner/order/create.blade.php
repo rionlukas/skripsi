@@ -50,6 +50,15 @@
 
                 <div class="col-md">
                     <div class="mb-3">
+                        <label for="inputStockQty" class="form-label">Stok Tersisa</label>
+                        <input type="text" class="form-control" id="inputStockQty" name="StockRemaining" readonly=true>
+                    </div>
+                </div>
+
+                
+
+                <div class="col-md">
+                    <div class="mb-3">
                         <label for="inputJumlahKain" class="form-label">Jumlah Kain Dalam Roll</label>
                         <input type="number" class="form-control" id="inputJumlahKain" name="Jumlah[]">
                     </div>
@@ -138,6 +147,7 @@
             document.getElementById('inputNamaKain').value = dataMaster.filter(x => x.KodeKain == kk)[0].NamaKain;
             document.getElementById('inputJenisKain').value = dataMaster.filter(x => x.KodeKain == kk)[0].JenisKain;
             document.getElementById('inputHarga').value = dataMaster.filter(x => x.KodeKain == kk)[0].Harga;
+            document.getElementById('inputStockQty').value = dataMaster.filter(x => x.KodeKain == kk)[0].qty;
         });
 
         $('#inputJumlahKain').change(function (e) {
@@ -194,6 +204,13 @@
                             <div class="mb-3">
                                 <label for="inputJenisKain" class="form-label">Jenis Kain</label>
                                 <input type="text" class="form-control inputJenisKain" id="inputJenisKain" name="JenisKain[]" readonly=true>
+                            </div>
+                        </div>
+
+                        <div class="col-md">
+                            <div class="mb-3">
+                                <label for="inputStockQty" class="form-label">Stok Tersisa</label>
+                                <input type="text" class="form-control inputStockQty" id="inputStockQty" name="StockRemaining" readonly=true>
                             </div>
                         </div>
 
@@ -263,6 +280,8 @@
                 $(e.target).closest('.induk').find('.inputJenisKain').val(dataMaster.filter(x => x.KodeKain == kk)[0].JenisKain);
                 $(e.target).closest('.induk').find('.inputNamaKain').val(dataMaster.filter(x => x.KodeKain == kk)[0].NamaKain);
                 $(e.target).closest('.induk').find('.inputHarga').val(dataMaster.filter(x => x.KodeKain == kk)[0].Harga);
+                $(e.target).closest('.induk').find('.inputStockQty').val(dataMaster.filter(x => x.KodeKain == kk)[0].qty);
+                
             });
 
             $('.inputJumlahKain').change(function(e)
