@@ -10,7 +10,7 @@
 <h1><u>Persetujuan Pembelian</u></h1>
 
     <table class="table">
-        <thead class="table-borderless">
+        <thead class="table-bpembelianless">
             <th>Kode Kain</th>
             <th>Nama Kain</th>
             <th>Jenis Kain</th>
@@ -32,15 +32,46 @@
                     <td>{{ $pembelian->TanggalPembelian }}</td>
                     <td>{{ $pembelian->Keterangan }}</td>
                     <td>{{ $pembelian->Status }}</td>
-                    
-                    <td>
-                        <form>
-                            <a class="btn btn-success btn-sm" href="{{ route('pembelian_approval',[$pembelian->id, 'Disetujui']) }}">Disetujui</a> 
-                            <a class="btn btn-danger btn-sm" href="{{ route('pembelian_approval',[$pembelian->id, 'Ditolak']) }}">Tolak</a>                       
-                        </form>
-                    </td>
+                    <form>
+                        <td>
+                            <input type="number" class="form-control" name="JumlahAcc" id="JumlahAcc" value="{{$pembelian->JumlahAcc}}"/>
+                        </td>
+                        <td>
+                            <button class="btn btn-success btn-sm btnApprove" type="button" id="btnApprove" value={{$pembelian->id}}>Disetujui</button> 
+                            <button class="btn btn-danger btn-sm btnReject" type="button" id="btnReject" value={{$pembelian->id}}>Tolak</button>                       
+                        </td>
+                    </form>
             </tbody>
         @endforeach
     </table>
+        
+
+    <script>
+        $('.btnApprove').click(function(event) {
+            var id = event.target.value;
+            var jmlAcc = $('#JumlahAcc').val();
+            var url = 'http://127.0.0.1:8000/api/owner/pembelian/approve/' + id + '/Disetujui/' + jmlAcc;
+            
+            fetch(url, {
+                method: 'PUT',
+                body: []
+            }).then(response => console.log(response))
+            window.location.href = './pembelian'
+        });
+        
+        $('.btnReject').click(function(event) {
+            var id = event.target.value;
+            var jmlAcc = $('#JumlahAcc').val();
+            var url = 'http://127.0.0.1:8000/api/owner/pembelian/approve/' + id + '/Ditolak/' + jmlAcc;
+            fetch(url, {
+                method: 'PUT',
+                body: []
+            }).then(response => function() {
+                debugger;
+                console.log(response);
+            })
+            window.location.href = './pembelian'
+        });
+    </script>
         
 @endsection

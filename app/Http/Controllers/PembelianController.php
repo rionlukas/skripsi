@@ -120,5 +120,28 @@ class PembelianController extends Controller
 
         return view('owner.pembelian.approvedPembelian')->with(compact('pembelians'));
     }
+
+    //api
+    public function api_approval($id, $value, $jmlAcc)
+    {
+        $dataPembelian = Pembelian::where('id', $id)->get();
+        if ($value == 'Disetujui') {
+          DB::table('pembelians')
+          ->where('id', $id)
+          ->update([
+              'Status' => $value,
+              'JumlahAcc' => $jmlAcc
+            ]);
+        } else 
+        {
+            DB::table('pembelians')
+          ->where('id', $id)
+          ->update([
+              'Status' => 'Ditolak'
+            ]);
+        }
+
+        return $value;
+    }
 }
 

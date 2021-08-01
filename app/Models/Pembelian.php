@@ -20,6 +20,7 @@ class Pembelian extends Model
         'TanggalPembelian',
         'Keterangan',
         'Status',
+        'JumlahAcc'
     ];
 
     public $timestamps = false;

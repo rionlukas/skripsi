@@ -22,6 +22,7 @@ class Order extends Model
         'TanggalOrder',
         'Keterangan',
         'Status',
+        'JumlahAcc'
     ];
 
     public $timestamps = false;

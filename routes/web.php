@@ -57,7 +57,7 @@ Route::get('owner/order/approved', 'OrderController@approvedOrder')->name('order
 Route::get('/owner/order/nota/{kodeKain}', 'OrderController@show')->name('order_nota');
 Route::get('/owner/order/create', 'OrderController@create')->name('order_create');
 Route::post('/owner/order/insert', 'OrderController@store')->name('order_insert');
-Route::get('/owner/order/approve/{id}/{value}', 'OrderController@approval')->name('order_approval');
+Route::get('/owner/order/approve/{id}/{value}/{jmlAcc}', 'OrderController@approval')->name('order_approval');
 Route::get('/owner/surat_jalan', 'OrderController@pageSuratJalan')->name('order_surat_jalan');
 Route::get('/owner/order/all', 'OrderController@GetAllOrder');
 Route::post('/owner/surat_jalan/store', 'OrderController@createSuratJalan')->name('surat_jalan_insert');
@@ -77,5 +77,7 @@ Route::view('/testing/layouting', 'testing.layout');
 Route::post('/testing/order/store', 'OrderController@storeTesting')->name('testing_post_order');
 Route::post('/api/testing/order/store', 'OrderController@storeTesting')->name('testing_post_order');
 
-
+//api
+Route::put('api/owner/order/approve/{id}/{value}/{jmlAcc}', 'OrderController@api_approval')->name('api_order_approval');
+Route::put('api/owner/pembelian/approve/{id}/{value}/{jmlAcc}', 'PembelianController@api_approval')->name('api_pembelian_approval');
 

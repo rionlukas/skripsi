@@ -18,7 +18,6 @@ class OrderController extends Controller
         $orders = DB::table('orders')
                 ->where('Status', '=', 'Belum Disetujui')
                 ->get();
-
         return view('owner.order.acc')->with(compact('orders'));
     }
 
@@ -63,7 +62,7 @@ class OrderController extends Controller
           return back()->with('Success', 'Menunggu ACC');
     }
 
-    public function approval($id, $value)
+    public function approval($id, $value, $jmlAcc)
     {
         $dataOrder = Order::where('id', $id)->get();
         if ($value == 'Disetujui') {
@@ -76,7 +75,7 @@ class OrderController extends Controller
             }
 
             $existingStock = Stock::where('KodeKain', $KodeKain)->get();
-          $jumlahExisting = 0;
+            $jumlahExisting = 0;
 
           foreach ($existingStock as $item) {
               $jumlahExisting = $item->Jumlah;
@@ -84,16 +83,17 @@ class OrderController extends Controller
 
           $jumlahAkhir = $jumlahExisting - $jumlah;
 
-          $affected = DB::table('stocks')
-              ->where('KodeKain', $KodeKain)
-              ->update([
-                  'Jumlah' => $jumlahAkhir
-                ]);
+        //   $affected = DB::table('stocks')
+        //       ->where('KodeKain', $KodeKain)
+        //       ->update([
+        //           'Jumlah' => $jumlahAkhir
+        //         ]);
 
           $updateStatusOrder = DB::table('orders')
           ->where('id', $id)
           ->update([
-              'Status' => $value
+              'Status' => $value,
+              'JumlahAcc' => $jmlAcc
             ]);
 
             return redirect()->route('order_approved');
@@ -193,6 +193,51 @@ class OrderController extends Controller
 
             Order::create($dataSave);
         }
+    }
+
+    //api
+
+    public function api_approval($id, $value, $jmlAcc)
+    {
+        $dataOrder = Order::where('id', $id)->get();
+        if ($value == 'Disetujui') {
+            $KodeKain = '';
+            $jumlah = 0;
+
+            foreach ($dataOrder as $item) {
+                $KodeKain = $item->KodeKain;
+                $jumlah = $item->Jumlah;
+            }
+
+            $existingStock = Stock::where('KodeKain', $KodeKain)->get();
+            $jumlahExisting = 0;
+
+          foreach ($existingStock as $item) {
+              $jumlahExisting = $item->Jumlah;
+          }
+
+          $jumlahAkhir = $jumlahExisting - $jumlah;
+
+        //   $affected = DB::table('stocks')
+        //       ->where('KodeKain', $KodeKain)
+        //       ->update([
+        //           'Jumlah' => $jumlahAkhir
+        //         ]);
+
+          $updateStatusOrder = DB::table('orders')
+          ->where('id', $id)
+          ->update([
+              'Status' => $value,
+              'JumlahAcc' => $jmlAcc
+            ]);
+        } else {
+            DB::table('orders')
+              ->where('id', $id)
+              ->update([
+                  'Status' => $value,
+                ]);
+        }
+
     }
 
 }
