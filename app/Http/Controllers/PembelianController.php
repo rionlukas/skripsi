@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Stock;
 use App\Models\Pembelian;
 use App\Models\Kain;
+use App\Models\Supplier;
 
 use DB;
 
@@ -25,7 +26,8 @@ class PembelianController extends Controller
     public function create()
     {
         $kains = Kain::all();
-        return view('owner.pembelian.create', ['kains' => $kains]);
+        $suppliers = Supplier::all();
+        return view('owner.pembelian.create', ['kains' => $kains, 'suppliers' => $suppliers]);
     }
 
     public function store(Request $request)

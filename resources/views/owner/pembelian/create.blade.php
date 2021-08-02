@@ -57,7 +57,12 @@
                 <div class="col-md">
                     <div class="mb-3">
                       <label for="inputSupplier" class="form-label">Supplier</label>
-                      <input type="text" class="form-control" id="inputSupplier" name="Supplier[]">
+                      <select name="Supplier[]" id="Supplier" class="form-control">
+                        <option value="">== Pilih Supplier ==</option>
+                        @foreach ($suppliers as $supplier)
+                        <option value="{{ $supplier->NamaSupplier }}">{{ $supplier->NamaSupplier }}</option>
+                        @endforeach
+                    </select>
                     </div>
                 </div>
             </div>
@@ -190,7 +195,12 @@
                         <div class="col-md">
                             <div class="mb-3">
                             <label for="inputSupplier" class="form-label">Supplier</label>
-                            <input type="text" class="form-control inputSupplier" id="inputSupplier" name="Supplier[]">
+                            <select name="Supplier[]" id="Supplier" class="form-control">
+                                <option value="">== Pilih Supplier ==</option>
+                                @foreach ($suppliers as $supplier)
+                                <option value="{{ $supplier->NamaSupplier }}">{{ $supplier->NamaSupplier }}</option>
+                                @endforeach
+                            </select>
                             </div>
                         </div>
                     </div>

@@ -80,4 +80,4 @@ Route::post('/api/testing/order/store', 'OrderController@storeTesting')->name('t
 //api
 Route::put('api/owner/order/approve/{id}/{value}/{jmlAcc}', 'OrderController@api_approval')->name('api_order_approval');
 Route::put('api/owner/pembelian/approve/{id}/{value}/{jmlAcc}', 'PembelianController@api_approval')->name('api_pembelian_approval');
-
+Route::get('api/suppler', 'SupplierController@GetAll')->name('api_supplier');
