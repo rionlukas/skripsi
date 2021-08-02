@@ -7,7 +7,7 @@
 
 @section('content')
 
-<h1><u> SuratJalan </u></h1>
+<h1><u> Surat Jalan </u></h1>
 
     <form action="{{ route('surat_jalan_insert') }}" method="post">
         @csrf
@@ -17,21 +17,22 @@
             <input type="text" class="form-control" id="inputSalesman" name="Salesman">
         </div>
     
-        <div class="mb-3">
-            <label for="inputTanggal" class="form-label">Tanggal</label>
-            <input type="date" class="form-control" id="inputTanggal" name="Tanggal">
-        </div>
-    
+        
         <div class="mb-3">
             <label for="inputDaftarOrder" class="form-label">Daftar Order</label>
             <select name="DaftarOrder" id="DaftarOrder" class="form-control">
-              <option value="">== Pilih Order ==</option>
-              @foreach ($orders as $order)
-                  <option value="{{ $order->OrderId }}">{{ $order->OrderId }}</option>
-              @endforeach
+                <option value="">== Pilih Order ==</option>
+                @foreach ($orders as $order)
+                <option value="{{ $order->OrderId }}">{{ $order->OrderId }}</option>
+                @endforeach
             </select>
         </div>
-    
+        
+        <div class="mb-3">
+            <label for="inputTanggal" class="form-label">Tanggal</label>
+            <input type="text" class="form-control inputTanggal" id="inputTanggal" name="Tanggal" readonly=true>
+        </div>
+
         <div class="mb-3">
             <label for="inputKodeKain" class="form-label">Kode Kain</label>
             <input type="text" class="form-control" id="inputKodeKain" name="KodeKain" readonly=true>
@@ -46,15 +47,20 @@
             <label for="inputJumlah" class="form-label">Jumlah</label>
             <input type="number" class="form-control" id="inputJumlah" name="Jumlah" readonly=true>
         </div>
-        
+
         <div class="mb-3">
+            <label for="inputAlamat" class="form-label">Alamat</label>
+            <input type="textarea" class="form-control" id="inputAlamat" name="Alamat">
+        </div>
+        
+        <div class="mb-3" hidden="true">
             <label for="inputHarga" class="form-label">Harga</label>
             <input type="number" class="form-control" id="inputHarga" name="Harga" value=0 readonly=true>
         </div>
     
-        <div class="mb-3">
+        <div class="mb-3" hidden="true">
             <label for="inputTotal" class="form-label">Total</label>
-            <input type="number" class="form-control" id="inputTotal" name="Total" readonly=true>
+            <input type="number" class="form-control" id="inputTotal" name="Total" value=0 readonly=true>
         </div>
     
         <div class="mb-3" hidden=true>
@@ -99,8 +105,7 @@
               document.getElementById('inputKodeKain').value = dataMaster.filter(x => x.OrderId == this.value)[0].KodeKain;
               document.getElementById('inputNamaKain').value = dataMaster.filter(x => x.OrderId == this.value)[0].NamaKain;
               document.getElementById('inputJumlah').value = dataMaster.filter(x => x.OrderId == this.value)[0].Jumlah;
-              document.getElementById('inputHarga').value = dataMaster.filter(x => x.OrderId == this.value)[0].Harga;
-              document.getElementById('inputTotal').value = dataMaster.filter(x => x.OrderId == this.value)[0].TotalHarga;
+              document.getElementById('inputTanggal').value = dataMaster.filter(x => x.OrderId == this.value)[0].TanggalOrder;
           });
       
       </script>

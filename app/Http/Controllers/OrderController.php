@@ -134,7 +134,8 @@ class OrderController extends Controller
     public function createSuratJalan(Request $request)
     {
         $request->merge([
-            'JSONString' => ''
+            'JSONString' => '',
+            'Total' => 0
         ]);
         
         $input = $request->all();

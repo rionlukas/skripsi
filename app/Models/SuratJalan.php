@@ -12,6 +12,7 @@ class SuratJalan extends Model
     protected $fillable = [
         'Salesman',
         'Tanggal',
+        'Alamat',
         'KodeKain',
         'NamaKain',
         'Jumlah',
