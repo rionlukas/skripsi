@@ -27,7 +27,7 @@
         </thead>
 
         @foreach ($orders as $order)
-            <tbody>
+            <tbody class="formGroup">
                     <td>{{ $order->OrderId }}</td>
                     <td>{{ $order->NamaCustomer }}</td>
                     <td>{{ $order->KodeKain }}</td>
@@ -41,7 +41,7 @@
                     <td>{{ $order->Status }}</td>
                     <form>
                         <td>
-                            <input type="number" class="form-control" name="JumlahAcc" id="JumlahAcc" value="{{$order->JumlahAcc}}"/>
+                            <input type="number" class="form-control JumlahAcc" name="JumlahAcc" id="JumlahAcc" value="{{$order->JumlahAcc}}"/>
                         </td>
                         <td>
                             <button class="btn btn-success btn-sm btnApprove" type="button" id="btnApprove" value={{$order->id}}>Disetujui</button> 
@@ -55,7 +55,7 @@
     <script>
         $('.btnApprove').click(function(event) {
             var id = event.target.value;
-            var jmlAcc = $('#JumlahAcc').val();
+            var jmlAcc = $(event.target).closest('.formGroup').find('.JumlahAcc').val();
             var url = 'http://127.0.0.1:8000/api/owner/order/approve/' + id + '/Disetujui/' + jmlAcc;
             
             fetch(url, {

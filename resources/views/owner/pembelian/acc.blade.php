@@ -23,7 +23,7 @@
         </thead>
 
         @foreach ($pembelians as $pembelian)
-            <tbody>
+            <tbody class="formGroup">
                     <td>{{ $pembelian->KodeKain }}</td>
                     <td>{{ $pembelian->NamaKain }}</td>
                     <td>{{ $pembelian->JenisKain }}</td>
@@ -34,7 +34,7 @@
                     <td>{{ $pembelian->Status }}</td>
                     <form>
                         <td>
-                            <input type="number" class="form-control" name="JumlahAcc" id="JumlahAcc" value="{{$pembelian->JumlahAcc}}"/>
+                            <input type="number" class="form-control JumlahAcc" name="JumlahAcc" id="JumlahAcc" value="{{$pembelian->JumlahAcc}}"/>
                         </td>
                         <td>
                             <button class="btn btn-success btn-sm btnApprove" type="button" id="btnApprove" value={{$pembelian->id}}>Disetujui</button> 
@@ -49,7 +49,8 @@
     <script>
         $('.btnApprove').click(function(event) {
             var id = event.target.value;
-            var jmlAcc = $('#JumlahAcc').val();
+            // var jmlAcc = $('#JumlahAcc').val();
+            var jmlAcc = $(event.target).closest('.formGroup').find('.JumlahAcc').val();
             var url = 'http://127.0.0.1:8000/api/owner/pembelian/approve/' + id + '/Disetujui/' + jmlAcc;
             
             fetch(url, {
