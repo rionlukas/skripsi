@@ -139,13 +139,21 @@ class OrderController extends Controller
         ]);
         
         $input = $request->all();
-        $stock = SuratJalan::create($input);
-        return back()->with('Success', 'Surat Jalan Berhasil dibuat');
+        $sj = SuratJalan::create($input);
+        return $this->printSuratJalan($sj->OrderId);
+        // return back()->with('Success', 'Surat Jalan Berhasil dibuat');
     }
 
-    public function printSuratJalan()
-    {
-        $orders = SuratJalan::all();
+    public function printSuratJalan($orderId)
+{
+        $orderId = 'order_001';
+        $orders = DB::select(DB::raw("
+            SELECT a.*, b.NamaCustomer
+            FROM surat_jalans a
+            LEFT JOIN orders b ON a.OrderId = b.OrderId
+            WHERE b.OrderId = '$orderId'
+        "));
+
         view()->share('owner.order.printSuratJalan', $orders);
         $pdf = PDF::loadView('owner.order.printSuratJalan', ['orders' => $orders]);
         return $pdf->download('suratjalan.pdf');

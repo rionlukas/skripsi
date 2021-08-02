@@ -19,7 +19,8 @@ class SuratJalan extends Model
         'Harga',
         'SubTotal',
         'Total',
-        'JSONString'
+        'JSONString',
+        'OrderId'
     ];
 
     public $timestamps = false;

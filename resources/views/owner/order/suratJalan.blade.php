@@ -20,7 +20,7 @@
         
         <div class="mb-3">
             <label for="inputDaftarOrder" class="form-label">Daftar Order</label>
-            <select name="DaftarOrder" id="DaftarOrder" class="form-control">
+            <select name="OrderId" id="DaftarOrder" class="form-control">
                 <option value="">== Pilih Order ==</option>
                 @foreach ($orders as $order)
                 <option value="{{ $order->OrderId }}">{{ $order->OrderId }}</option>
@@ -50,7 +50,7 @@
 
         <div class="mb-3">
             <label for="inputAlamat" class="form-label">Alamat</label>
-            <input type="textarea" class="form-control" id="inputAlamat" name="Alamat">
+            <textarea class="form-control" id="inputAlamat" name="Alamat"></textarea>
         </div>
         
         <div class="mb-3" hidden="true">

@@ -26,8 +26,6 @@
                     <th>Nama Customer</th>
                     <th>Nama Kain</th>
                     <th>Jumlah Dalam Roll</th>
-                    <th>Harga</th>
-                    <th>TotalHarga</th>
                     <th>Tanggal</th>
                     <th>Alamat</th>
                 </tr>
@@ -37,8 +35,6 @@
                         <td>{{ $order->NamaCustomer }}</td>
                         <td>{{ $order->NamaKain }}</td>
                         <td>{{ $order->Jumlah }}</td>
-                        <td>{{ $order->Harga }}</td>
-                        <td>{{ $order->Total }}</td>
                         <td>{{ $order->Tanggal }}</td>
                         <td>{{ $order->Alamat }}</td>
                 </tr>
