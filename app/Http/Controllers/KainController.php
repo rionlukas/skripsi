@@ -16,13 +16,13 @@ class KainController extends Controller
     public function index()
     {
         $kains = Kain::all();
-        // return view('owner.stock.create', ['kains' => $kains]);
+        return view('master.kain.index', ['kains' => $kains]);
     }
 
     public function getAllOnlyData() 
     {
         $kains = DB::select('SELECT a.*, IFNULL(b.Jumlah,0) AS qty from kains a
-                            LEFT JOIN stocks b ON a.KodeKain = b.KodeKain');
+                            LEFT JOIN kains b ON a.KodeKain = b.KodeKain');
         return $kains;
     }
 
@@ -66,7 +66,8 @@ class KainController extends Controller
      */
     public function edit($id)
     {
-        //
+        $kain = Kain::findorfail($id);
+        return view('master.kain.edit', ['kain' => $kain]);
     }
 
     /**
@@ -78,7 +79,16 @@ class KainController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'KodeKain' => 'required',
+            'NamaKain' => 'required', 
+            'JenisKain' => 'required', 
+            'Harga' => 'required',
+        ]);
+
+        $kain = Kain::find($id)->update($request->all());
+
+        return redirect()->route('kain_index')->with('Success', 'Data Telah Diperbaharui !');
     }
 
     /**
@@ -89,6 +99,8 @@ class KainController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $kain = Kain::find($id);
+        $kain->delete();
+        return back()->with('success', 'data berhasil dihapus');
     }
 }

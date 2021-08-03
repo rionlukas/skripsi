@@ -65,6 +65,10 @@ Route::get('/owner/surat_jalan/pdf', 'OrderController@printSuratJalan')->name('s
 
 //Route kain
 Route::get('owner/kain', 'KainController@getAllOnlyData')->name('kain_master');
+Route::get('/master/kain', 'KainController@index')->name('kain_index');
+Route::get('/master/kain/edit/{id}', 'KainController@edit')->name('kain_edit');
+Route::put('/master/kain/update/{id}', 'KainController@update')->name('kain_update');
+Route::delete('/master/kain/delete/{id}', 'KainController@destroy')->name('kain_delete');
 
 //Route EOQ
 Route::view('/eoq', 'eoq');
@@ -81,3 +85,4 @@ Route::post('/api/testing/order/store', 'OrderController@storeTesting')->name('t
 Route::put('api/owner/order/approve/{id}/{value}/{jmlAcc}', 'OrderController@api_approval')->name('api_order_approval');
 Route::put('api/owner/pembelian/approve/{id}/{value}/{jmlAcc}', 'PembelianController@api_approval')->name('api_pembelian_approval');
 Route::get('api/suppler', 'SupplierController@GetAll')->name('api_supplier');
+
