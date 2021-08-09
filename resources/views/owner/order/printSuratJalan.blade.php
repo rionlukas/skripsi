@@ -21,22 +21,63 @@
 
 <h1><u>Surat Jalan</u></h1>
 
-        <table>
-                <tr>
-                    <th>Nama Customer</th>
-                    <th>Nama Kain</th>
-                    <th>Jumlah Dalam Roll</th>
-                    <th>Tanggal</th>
-                    <th>Alamat</th>
-                </tr>
-    
+<table>
+    <table>
+        <tr>   
             @foreach ($orders as $order)
-                <tr>
-                        <td>{{ $order->NamaCustomer }}</td>
-                        <td>{{ $order->NamaKain }}</td>
-                        <td>{{ $order->Jumlah }}</td>
-                        <td>{{ $order->Tanggal }}</td>
-                        <td>{{ $order->Alamat }}</td>
+            <th></th> 
+                <th></th>
+                <th></th>
+                <th>Kepada Yth : </th>
+                <th>{{ $order->NamaCustomer }}</th>
+            </tr>                  
+            <tr>
+                <th>Order Id : </th>
+                <th>{{ $order->OrderId }}</th>
+                <th></th>
+                <th></th>
+                <th>{{ $order->Alamat }}</th>
+            </tr>
+            <tr>
+                <th>Tanggal : </th>
+                <th>{{ $order->Tanggal }}</th>
+                <th></th>
+                <th></th>
+                <th></th>
+            </tr>
+
+            <tr>
+                <th>Nama Kain : </th>
+                <th>{{ $order->NamaKain }}</th>
+                <th></th>
+                <th>Jumlah Dalam Rol</th>
+                <th></th>
+            </tr>
+
+            <tr>
+                <th></th>
+                <th>{{ $order->NamaKain }}</th>
+                <th></th>
+                <th>{{ $order->Jumlah }}</th>
+                <th></th>
+            </tr>
+
+ 
+            <tr>
+                <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
                 </tr>
-            @endforeach
-    </table>
+            <tr>
+                    <td></td>
+                    <td></td>
+                    <td>Total : </td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                @endforeach
+                
+            </table>
+            
