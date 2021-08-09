@@ -18,14 +18,14 @@ use App\Http\Controllers\KainController;
 */
 
 //contoh route
-// Route::view('/about', 'about');
+// Route::view('/about', 'abou  t');
 // Route::get('/', 'CoffeeController@index');
 // Route::view('/coffee/create', 'coffee.create');
 // Route::post('/coffee/store', 'CoffeeController@store')->name('coffee.store');
 
 Route::get('/', function () {
-    return view('welcome');
-});
+    return view('utama');
+})->name('login_page');
 
 Route::get('/admin', [AdminController::class, 'index'])->name('admin.index')->middleware('role:admin')->name('admin');
 
@@ -72,6 +72,11 @@ Route::delete('/master/kain/delete/{id}', 'KainController@destroy')->name('kain_
 
 //Route EOQ
 Route::view('/eoq', 'eoq');
+
+//Route User
+Route::view('/user/register', 'register')->name('user_register');
+Route::post('/user/create', 'UserController@store')->name('user_create');
+Route::post('/user/login', 'UserController@login')->name('user_login');
 
 //Test
 Route::get('testing/order/nota/{kodeKain}', 'OrderController@testing');
