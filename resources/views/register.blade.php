@@ -23,9 +23,16 @@
     <title>Register</title>
 </head>
 <body>
-
+    
     <div class="container">
-        <h1 class="h1 text-center">Register User</h1>
+        <div class="row">
+            <div class="col-2">
+                <a href="{{ url('/') }}" class="btn btn-secondary">Back</a>
+            </div>
+            <div class="col-10">
+                <h1 class="h1 text-center">Register User</h1>
+            </div>
+        </div>
         <form action="{{ route('user_create') }}" method="post">
             @csrf
             <div class="form-group">

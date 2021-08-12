@@ -25,6 +25,7 @@
 <body>
 
     <div class="container">
+        <h1 class="text-center">Login</h1>
         <form action="{{route('user_login')}}" method="post">
             @csrf
             <div class="form-group">
@@ -36,6 +37,7 @@
               <input type="password" class="form-control" id="exampleInputPassword1" name="password">
             </div>
             <button type="submit" class="btn btn-primary">Login</button>
+            <a href="{{ route('user_register') }}" class="btn btn-success">Register</a>
         </form>
     </div>
         
