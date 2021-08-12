@@ -48,18 +48,33 @@
                 </div>
               </div>
               
+              <div class="dropdown">
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Pembelian
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                  <a class="dropdown-item" href="/owner/pembelian/create">Pembelian</a>
+                  <a class="dropdown-item" href="{{ route('pembelian_acc') }}">ACC Pembelian</a>
+                  <a class="dropdown-item" href="{{ route('pembelian_approved') }}">Report Pembelian</a>
+                </div>
+              </div>
+
+              <div class="dropdown">
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Order
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                  <a class="dropdown-item" href="/owner/order/create">Order</a>
+                  <a class="dropdown-item" href="{{ route('order_acc') }}">ACC Order</a>
+                  <a class="dropdown-item" href="{{ route('order_approved') }}">Report Order</a>
+                </div>
+              </div>
+
               <a href="{{ route('stock') }}" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Stock</a>
               
-              <a href="/owner/pembelian/create" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Pembelian</a>
-
-              <a href="/owner/order/create" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Order</a>
-
               <a href="{{ url('/eoq') }}" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">EOQ</a>
               
-              <a href="{{ route('pembelian_acc') }}" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">ACC Pembelian</a>
-              <a href="{{ route('pembelian_approved') }}" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Report Pembelian</a>
-              <a href="{{ route('order_acc') }}" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">ACC Order</a>
-              <a href="{{ route('order_approved') }}" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Report Order</a>
+              
               <a href="{{ route('order_surat_jalan') }}" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Surat Jalan</a>
             </div>
           </div>
