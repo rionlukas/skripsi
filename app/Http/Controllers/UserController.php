@@ -55,7 +55,7 @@ class UserController extends Controller
             $checkPass = Hash::check($request->password, $isExist[0]->password);
             
             if ($checkPass) {
-                return $this->greeting($isExist);
+                return redirect()->route('user_greeting', ['role' => $isExist[0]->role, 'name' => $isExist[0]->name]);
             } 
             else 
             {
@@ -67,9 +67,8 @@ class UserController extends Controller
         }
     }
 
-    public function greeting($data)
+    public function greeting($role, $name)
     {
-        dd($data[0]);
-        return redirect()->route('user_greeting', ['data' => $data]);
+        return view('greeting', ['role' => $role, 'name' => $name]);
     }
 }

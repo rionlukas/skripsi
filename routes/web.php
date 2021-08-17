@@ -64,7 +64,7 @@ Route::post('/owner/surat_jalan/store', 'OrderController@createSuratJalan')->nam
 Route::get('/owner/surat_jalan/pdf', 'OrderController@printSuratJalan')->name('surat_jalan_print');
 
 //Route kain
-Route::get('owner/kain', 'KainController@getAllOnlyData')->name('kain_master');
+Route::get('/owner/kain', 'KainController@getAllOnlyData')->name('kain_master');
 Route::get('/master/kain', 'KainController@index')->name('kain_index');
 Route::get('/master/kain/edit/{id}', 'KainController@edit')->name('kain_edit');
 Route::put('/master/kain/update/{id}', 'KainController@update')->name('kain_update');
@@ -77,7 +77,7 @@ Route::view('/eoq', 'eoq');
 Route::view('/user/register', 'register')->name('user_register');
 Route::post('/user/create', 'UserController@store')->name('user_create');
 Route::post('/user/login', 'UserController@login')->name('user_login');
-Route::view('/user/greeting', 'greeting')->name('user_greeting');
+Route::get('/user/greeting/{role}/{name}', 'UserController@greeting')->name('user_greeting');
 
 //Test
 Route::get('testing/order/nota/{kodeKain}', 'OrderController@testing');

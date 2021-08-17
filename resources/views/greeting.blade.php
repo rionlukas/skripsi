@@ -22,12 +22,30 @@
 @section('content')
 
     <div class="container">
-        <h1>Hello, {{ $data[0]->name }}</h1>
+        <h1>Hello, {{ $name }}</h1>
     </div>
 
     <script>
-        var data = {!! json_encode($data->toArray(), JSON_HEX_TAG) !!}
-        console.log(data);
+        var role = {!! json_encode($role, JSON_HEX_TAG) !!};
+
+        switch(role)
+        {
+            case 'Owner':
+                break;
+            
+            case 'Admin':
+                $('#menuStock').hide();
+                $('#menuSuratJalan').hide();
+                break;
+
+            case 'Staff':
+                $('#menuStock').show();
+                $('#menuSuratJalan').show();
+                break;
+
+            default:
+                break;
+        }
     </script>
 
 @endsection

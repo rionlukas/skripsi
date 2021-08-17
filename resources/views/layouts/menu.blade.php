@@ -38,7 +38,7 @@
               <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
 
               {{-- DROPDOWN MENU --}}
-              <div class="dropdown">
+              <div class="dropdown" id="menuDropdownMaster">
                 <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   Master
                 </button>
@@ -48,7 +48,7 @@
                 </div>
               </div>
               
-              <div class="dropdown">
+              <div class="dropdown" id="menuDropdownPembelian">
                 <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   Pembelian
                 </button>
@@ -59,7 +59,7 @@
                 </div>
               </div>
 
-              <div class="dropdown">
+              <div class="dropdown" id="menuDropdownOrder">
                 <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   Order
                 </button>
@@ -70,12 +70,12 @@
                 </div>
               </div>
 
-              <a href="{{ route('stock') }}" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Stock</a>
+              <a href="{{ route('stock') }}" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium" id="menuStock">Stock</a>
               
-              <a href="{{ url('/eoq') }}" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">EOQ</a>
+              <a href="{{ url('/eoq') }}" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium" id="menuEOQ">EOQ</a>
               
               
-              <a href="{{ route('order_surat_jalan') }}" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Surat Jalan</a>
+              <a href="{{ route('order_surat_jalan') }}" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium" id="menuSuratJalan">Surat Jalan</a>
             </div>
           </div>
         </div>

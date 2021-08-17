@@ -22,7 +22,7 @@ class KainController extends Controller
     public function getAllOnlyData() 
     {
         $kains = DB::select('SELECT a.*, IFNULL(b.Jumlah,0) AS qty from kains a
-                            LEFT JOIN kains b ON a.KodeKain = b.KodeKain');
+                            LEFT JOIN stocks b ON a.KodeKain = b.KodeKain');
         return $kains;
     }
 
