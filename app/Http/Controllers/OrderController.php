@@ -211,11 +211,9 @@ class OrderController extends Controller
         $dataOrder = Order::where('id', $id)->get();
         if ($value == 'Disetujui') {
             $KodeKain = '';
-            $jumlah = 0;
 
             foreach ($dataOrder as $item) {
                 $KodeKain = $item->KodeKain;
-                $jumlah = $item->Jumlah;
             }
 
             $existingStock = Stock::where('KodeKain', $KodeKain)->get();
@@ -225,19 +223,21 @@ class OrderController extends Controller
               $jumlahExisting = $item->Jumlah;
           }
 
-          $jumlahAkhir = $jumlahExisting - $jumlah;
+          $jumlahAkhir = $jumlahExisting - $jmlAcc;
 
-        //   $affected = DB::table('stocks')
-        //       ->where('KodeKain', $KodeKain)
-        //       ->update([
-        //           'Jumlah' => $jumlahAkhir
-        //         ]);
+            $updateStatusOrder = DB::table('orders')
+            ->where('id', $id)
+            ->update([
+                'Status' => $value,
+                'JumlahAcc' => $jmlAcc
+                ]);
 
-          $updateStatusOrder = DB::table('orders')
-          ->where('id', $id)
-          ->update([
-              'Status' => $value,
-              'JumlahAcc' => $jmlAcc
+            $jmlAkhir = $
+
+            $updateStock = DB::table('stocks')
+            ->where('KodeKain', $KodeKain)
+            ->update([
+                'Jumlah' => $jumlahAkhir
             ]);
         } else {
             DB::table('orders')
