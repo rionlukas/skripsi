@@ -152,7 +152,7 @@ class OrderController extends Controller
             LEFT JOIN orders b ON a.OrderId = b.OrderId
             WHERE b.OrderId = '$orderId'
         "));
-        
+
         view()->share('owner.order.printSuratJalan', $orders);
         $pdf = PDF::loadView('owner.order.printSuratJalan', ['orders' => $orders]);
         return $pdf->download('suratjalan.pdf');
@@ -203,9 +203,13 @@ class OrderController extends Controller
         }
     }
 
-    public function printNota()
+    public function printNota($orderId)
     {
-
+        $orders = Order::where('OrderId', $orderId)->get();
+        
+        view()->share('owner.order.nota', $orders);
+        $pdf = PDF::loadView('owner.order.nota', ['orders' => $orders]);
+        return $pdf->download('nota.pdf');
     }
 
     //api

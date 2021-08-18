@@ -36,11 +36,10 @@ v<head>
                 <th>{{ $order->OrderId }}</th>
                 <th></th>
                 <th></th>
-                <th>{{ $order->Alamat }}</th>
             </tr>
             <tr>
                 <th>Tanggal : </th>
-                <th>{{ $order->Tanggal }}</th>
+                <th>{{ $order->TanggalOrder }}</th>
                 <th></th>
                 <th></th>
                 <th></th>

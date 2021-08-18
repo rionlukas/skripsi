@@ -42,7 +42,7 @@
                     <td>
                         <form>
                             {{-- <a class="btn btn-secondary btn-sm" href="/owner/order/nota">Detail</a> --}}
-                            <a class="btn btn-secondary btn-sm" href="{{ route('order_nota',$order->KodeKain) }}">Detail</a>
+                            <a class="btn btn-secondary btn-sm" href="{{ route('order_nota',$order->OrderId) }}">Detail</a>
                         </form>
                     </td>
             </tbody>
