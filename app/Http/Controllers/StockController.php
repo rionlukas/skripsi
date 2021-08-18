@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Stock;
 use App\Models\Kain;
+use Illuminate\Support\Facades\DB;
 
 class StockController extends Controller
 {
@@ -16,7 +17,8 @@ class StockController extends Controller
     public function index()
     {
         $stocks = Stock::all();
-        return view('owner.stock.index', ['stocks' => $stocks]);
+        return view('owner.stock.index', ['stocks' => DB::table('stocks')->paginate(10)
+    ]);
     }
 
     /**

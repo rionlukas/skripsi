@@ -10,6 +10,8 @@
 <h1><u>Stock</u></h1>
 
     <a href="/owner/create" class="btn btn-info">Kain Baru</a>
+    <br><br>
+    {{ $stocks->links() }}
 
     <table class="table">
         <thead class="table-borderless">
