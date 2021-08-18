@@ -145,15 +145,14 @@ class OrderController extends Controller
     }
 
     public function printSuratJalan($orderId)
-{
-        $orderId = 'order_001';
+    {
         $orders = DB::select(DB::raw("
             SELECT a.*, b.NamaCustomer
             FROM surat_jalans a
             LEFT JOIN orders b ON a.OrderId = b.OrderId
             WHERE b.OrderId = '$orderId'
         "));
-
+        
         view()->share('owner.order.printSuratJalan', $orders);
         $pdf = PDF::loadView('owner.order.printSuratJalan', ['orders' => $orders]);
         return $pdf->download('suratjalan.pdf');
@@ -202,6 +201,11 @@ class OrderController extends Controller
 
             Order::create($dataSave);
         }
+    }
+
+    public function printNota()
+    {
+
     }
 
     //api
