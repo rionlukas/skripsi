@@ -5,6 +5,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\StockController;
 use App\Http\Controllers\PembelianController;
 use App\Http\Controllers\KainController;
+use App\Models\Kain;
 
 /*
 |--------------------------------------------------------------------------
@@ -71,7 +72,10 @@ Route::put('/master/kain/update/{id}', 'KainController@update')->name('kain_upda
 Route::delete('/master/kain/delete/{id}', 'KainController@destroy')->name('kain_delete');
 
 //Route EOQ
-Route::view('/eoq', 'eoq');
+Route::get('/eoq', function() {
+    $kains = Kain::all();
+    return view('eoq', compact('kains'));
+});
 
 //Route User
 Route::view('/user/register', 'register')->name('user_register');
@@ -102,5 +106,5 @@ Route::get('/testing/testingString/{word}', 'TestingController@testString');
 //api
 Route::put('api/owner/order/approve/{id}/{value}/{jmlAcc}', 'OrderController@api_approval')->name('api_order_approval');
 Route::put('api/owner/pembelian/approve/{id}/{value}/{jmlAcc}', 'PembelianController@api_approval')->name('api_pembelian_approval');
-Route::get('api/suppler', 'SupplierController@GetAll')->name('api_supplier');
+Route::get('api/supplier', 'SupplierController@GetAll')->name('api_supplier');
 

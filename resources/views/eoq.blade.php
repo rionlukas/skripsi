@@ -10,6 +10,16 @@
     <h1>This is eoq page</h1>
 
         <div class="mb-3">
+            <label for="inputKodeKain" class="form-label">Nama Kain</label>
+            <select name="KodeKain[]" id="KodeKain" class="form-control">
+            <option value="">== Pilih Kain ==</option>
+                @foreach ($kains as $kain)
+                    <option value="{{ $kain->KodeKain }}">{{ $kain->NamaKain }}</option>
+                @endforeach
+            </select>
+        </div>
+
+        <div class="mb-3">
             <label for="inputJumlahUnit" class="form-label">Jumlah Unit</label>
             <input type="number" class="form-control" id="inputJumlahUnit" name="JumlahUnit">
         </div>
@@ -51,6 +61,32 @@
 
     <script>
 
+        window.onload = onPageLoaded();     
+        function onPageLoaded() {
+            localStorage.clear();
+            GetAllKainData();
+        }
+
+        async function GetAllKainData() 
+        {
+            const data = await fetch("http://127.0.0.1:8000/owner/kain", {
+                method: "GET",
+                headers: {
+                    "Content-Type": "application/json"
+                }
+            });
+
+            const dataProps = await data.json();
+            var rawData = JSON.stringify(dataProps);
+            localStorage.setItem('data', rawData);
+        }
+
+        $('#KodeKain').change(function (e) {
+            var kk = this.value;
+            var dataMaster = JSON.parse(localStorage.data);
+            document.getElementById('inputHargaPembelian').value = dataMaster.filter(x => x.KodeKain == kk)[0].Harga;
+        });
+
         $('#btnHitung').click(function(e){
             var jmlUnit = $('#inputJumlahUnit').val();
             var biayaPesanan = $('#inputBiayaPesanan').val();
@@ -83,16 +119,14 @@
             var step1 = 0;
             var step2 = 0;
            
-
-
             step1 = 2 * jmlUnit * biayaPesanan;
             step2 = step1 / (hargaPembelian * (biayaPenyimpanan / 100));
             result = Math.sqrt(step2);
             resultOrder = jmlUnit / result;
             resultHari = 360 / resultOrder;
-            $('#inputResult').val(result);
-            $('#inputResultOrder').val(resultOrder);
-            $('#inputResultHari').val(resultHari);
+            $('#inputResult').val(parseInt(result));    
+            $('#inputResultOrder').val(parseInt(resultOrder));
+            $('#inputResultHari').val(parseInt(resultHari));
 
         });
 

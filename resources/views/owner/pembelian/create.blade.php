@@ -18,7 +18,7 @@
                         <input type="text" class="form-control" id="inputTransactionId" name="TransactionId[]">
                     </div>
                 </div>
-                
+
                 <div class="col-md">
                     <div class="mb-3">
                         <label for="inputKodeKain" class="form-label">Nama Kain</label>
@@ -53,18 +53,14 @@
                       <input type="number" class="form-control" id="inputJumlahKain" name="Jumlah[]">
                     </div>
                 </div>
-    
+
                 <div class="col-md">
                     <div class="mb-3">
                       <label for="inputSupplier" class="form-label">Supplier</label>
-                      <select name="Supplier[]" id="Supplier" class="form-control">
-                        <option value="">== Pilih Supplier ==</option>
-                        @foreach ($suppliers as $supplier)
-                        <option value="{{ $supplier->NamaSupplier }}">{{ $supplier->NamaSupplier }}</option>
-                        @endforeach
-                    </select>
+                      <input type="text" class="form-control inputSupplier" id="inputSupplier" name="Supplier" readonly=true>
                     </div>
                 </div>
+    
             </div>
     
             <div class="row">
@@ -113,29 +109,46 @@
       function onPageLoaded() {
           localStorage.clear();
           GetAllKainData();
+          GetAllSupplierData();
       }
 
-      async function GetAllKainData() 
-      {
-        const data = await fetch("http://127.0.0.1:8000/owner/kain", {
-        method: "GET",
-        headers: {
-            "Content-Type": "application/json"
+        async function GetAllKainData() {
+            const data = await fetch("http://127.0.0.1:8000/owner/kain", {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json"
+            }
+            });
+            
+            const dataProps = await data.json();
+            var rawData = JSON.stringify(dataProps);
+            localStorage.setItem('data', rawData);
         }
-        });
-        
-          const dataProps = await data.json();
-          var rawData = JSON.stringify(dataProps);
-          localStorage.setItem('data', rawData);
+
+        async function GetAllSupplierData() {
+            const data = await fetch("http://127.0.0.1:8000/api/supplier", {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json"
+            }
+            });
+            
+            const dataProps = await data.json();
+            var rawData = JSON.stringify(dataProps);
+            localStorage.setItem('supplier_data', rawData);
         }
 
         
         $('#KodeKain').change(function (e) {
             var kk = this.value;
             var dataMaster = JSON.parse(localStorage.data);
+            var dataSupplier = JSON.parse(localStorage.supplier_data);
             document.getElementById('inputNamaKain').value = dataMaster.filter(x => x.KodeKain == kk)[0].NamaKain;
             document.getElementById('inputJenisKain').value = dataMaster.filter(x => x.KodeKain == kk)[0].JenisKain;
             document.getElementById('inputStockQty').value = dataMaster.filter(x => x.KodeKain == kk)[0].qty;
+
+            var supId = dataMaster.filter(x => x.KodeKain == kk)[0].SupplierId;
+            document.getElementById('inputSupplier').value = dataSupplier.filter(x => x.id == supId)[0].NamaSupplier;
         });
     
 
@@ -191,18 +204,14 @@
                             <input type="number" class="form-control inputJumlahKain" id="inputJumlahKain" name="Jumlah[]">
                             </div>
                         </div>
-            
+
                         <div class="col-md">
                             <div class="mb-3">
-                            <label for="inputSupplier" class="form-label">Supplier</label>
-                            <select name="Supplier[]" id="Supplier" class="form-control">
-                                <option value="">== Pilih Supplier ==</option>
-                                @foreach ($suppliers as $supplier)
-                                <option value="{{ $supplier->NamaSupplier }}">{{ $supplier->NamaSupplier }}</option>
-                                @endforeach
-                            </select>
+                                <label for="inputSupplier" class="form-label">Supplier</label>
+                                <input type="text" class="form-control inputSupplier" id="inputSupplier" name="Supplier" readonly=true>
                             </div>
                         </div>
+            
                     </div>
             
                     <div class="row">
@@ -246,9 +255,13 @@
             {
                 var kk = this.value;
                 var dataMaster = JSON.parse(localStorage.data);
+                var dataSupplier = JSON.parse(localStorage.supplier_data);
                 $(e.target).closest('.induk').find('.inputJenisKain').val(dataMaster.filter(x => x.KodeKain == kk)[0].JenisKain);
                 $(e.target).closest('.induk').find('.inputNamaKain').val(dataMaster.filter(x => x.KodeKain == kk)[0].NamaKain);
                 $(e.target).closest('.induk').find('.inputStockQty').val(dataMaster.filter(x => x.KodeKain == kk)[0].qty);
+                
+                var supId = dataMaster.filter(x => x.KodeKain == kk)[0].SupplierId;
+                $(e.target).closest('.induk').find('.inputSupplier').val(dataSupplier.filter(x => x.id == supId)[0].NamaSupplier);
                 
             });
 

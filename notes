@@ -6,14 +6,14 @@ staff gudang -> Stock, Surat Jalan
 ===============================================================
 
 HALAMAN EOQ
-- munculin nama/jenis kain + harga kain (harga pemebelian per unit / roll)
-- hasil perhiutngan eoq dibuletin angkanya (misal 32.6 -> 33, 32.3 -> 32)
+- munculin nama/jenis kain + harga kain (harga pemebelian per unit / roll) [DONE]
+- hasil perhiutngan eoq dibuletin angkanya (misal 32.6 -> 33, 32.3 -> 32) [DONE]
 
 
 HALAMAN PEMBELIAN 
-- relasi kain + supplier (kain a -> supplier a,b,c ga semua supplier muncul)
+- relasi kain + supplier (kain a -> supplier a,b,c ga semua supplier muncul) [DONE]
 - munculin notifikasi safety stock berdasarkan hasil perhitungan eoq
 - faktur pembelian 1 lembar per supplier dan tanggal
 
 HALAMAN MASTER SUPPLIER
-- blade supplier
+- blade supplier [DONE]

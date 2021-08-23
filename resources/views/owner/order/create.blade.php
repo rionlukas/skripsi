@@ -126,20 +126,21 @@
           GetAllKainData();
       }
 
-      async function GetAllKainData() 
-      {
+    async function GetAllKainData() 
+    {
         const data = await fetch("http://127.0.0.1:8000/owner/kain", {
-        method: "GET",
-        headers: {
-            "Content-Type": "application/json"
-        }
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json"
+            }
         });
-
-          const dataProps = await data.json();
-          console.log(dataProps);
-          var rawData = JSON.stringify(dataProps);
-          localStorage.setItem('data', rawData);
-        }
+    
+        const dataProps = await data.json();
+    
+        var rawData = JSON.stringify(dataProps);
+    
+        localStorage.setItem('data', rawData);
+    }
 
         
         $('#KodeKain').change(function (e) {
