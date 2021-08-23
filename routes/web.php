@@ -79,6 +79,15 @@ Route::post('/user/create', 'UserController@store')->name('user_create');
 Route::post('/user/login', 'UserController@login')->name('user_login');
 Route::get('/user/greeting/{role}/{name}', 'UserController@greeting')->name('user_greeting');
 
+//Route Supplier
+Route::get('/owner/supplier', 'SupplierController@index')->name('supplier_index');
+Route::get('/owner/supplier/create', 'SupplierController@create')->name('supplier_create');
+Route::post('/owner/supplier/insert', 'SupplierController@store')->name('supplier_insert');
+Route::get('/owner/supplier/edit/{id}', 'SupplierController@edit')->name('supplier_edit');
+Route::put('/owner/supplier/update/{id}', 'SupplierController@update')->name('supplier_update');
+Route::delete('/owner/supplier/delete/{id}', 'SupplierController@destroy')->name('supplier_delete');
+
+
 //Test
 Route::get('testing/order/nota/{kodeKain}', 'OrderController@testing');
 Route::get('testing/print', 'OrderController@testingPrint');

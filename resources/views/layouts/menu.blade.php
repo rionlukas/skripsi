@@ -44,7 +44,7 @@
                 </button>
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                   <a class="dropdown-item" href="{{route('kain_index')}}">Kain</a>
-                  <a class="dropdown-item" href="#">Supplier</a>
+                  <a class="dropdown-item" href="{{route('supplier_index')}}">Supplier</a>
                 </div>
               </div>
               
