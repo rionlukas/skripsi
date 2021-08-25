@@ -7,16 +7,20 @@
 
 @section('content')
 
-    <h1>This is eoq page</h1>
-
+    <a href="{{ route('eoq_index') }}" class="btn btn-info mb-8 mt-8">Daftar EOQ</a>
+    
+    <h1>Tambah Data EOQ</h1>
+    <form action="{{ route('eoq_store') }}" method="post">
+        @csrf
         <div class="mb-3">
             <label for="inputKodeKain" class="form-label">Nama Kain</label>
-            <select name="KodeKain[]" id="KodeKain" class="form-control">
+            <select name="KodeKain" id="KodeKain" class="form-control">
             <option value="">== Pilih Kain ==</option>
                 @foreach ($kains as $kain)
                     <option value="{{ $kain->KodeKain }}">{{ $kain->NamaKain }}</option>
                 @endforeach
             </select>
+            <input type="text" class="form-control" id="inputNamaKain" name="NamaKain" readonly=true hidden=true>
         </div>
 
         <div class="mb-3">
@@ -40,24 +44,32 @@
         </div>
 
         <div class="mb-3">
-            <button class="btn btn-success" id="btnHitung">Hitung</button>
-            <button class="btn btn-secondary" id="btnReset">Reset</button>
+            <button class="btn btn-success" type="button" id="btnHitung">Hitung</button>
+            <button class="btn btn-secondary" type="button" id="btnReset">Reset</button>
         </div>
 
         <div class="mb-3">
             <label for="inputResult" class="form-label">Hasil Perhitungan EOQ</label>
-            <input type="number" class="form-control" id="inputResult" name="Result" readonly=true> 
+            <input type="number" class="form-control" id="inputResult" name="EOQ" readonly=true> 
         </div>
 
         <div class="mb-3">
             <label for="inputResultOrder" class="form-label">Dengan Jumlah Order Per Tahun Sebanyak : </label>
-            <input type="number" class="form-control" id="inputResultOrder" name="ResultOrder" readonly=true> 
+            <input type="number" class="form-control" id="inputResultOrder" name="JumlahOPT" readonly=true> 
         </div>
 
         <div class="mb-3">
             <label for="inputResultHari" class="form-label">Dilakukan Selama : </label>
-            <input type="number" class="form-control" id="inputResultHari" name="ResultHari" readonly=true> 
+            <input type="number" class="form-control" id="inputResultHari" name="FrekuensiOrder" readonly=true> 
         </div>
+
+        <div class="mb-3">
+            <label for="inputAcuanEOQ" class="form-label">Acuan EOQ : </label>
+            <input type="number" class="form-control" id="inputAcuanEOQ" name="AcuanEOQ" readonly=true> 
+        </div>
+
+        <button type="submit" class="btn btn-primary btn-lg btn-block mt-8 mb-4">Save</button>
+    </form>
 
     <script>
 
@@ -85,6 +97,7 @@
             var kk = this.value;
             var dataMaster = JSON.parse(localStorage.data);
             document.getElementById('inputHargaPembelian').value = dataMaster.filter(x => x.KodeKain == kk)[0].Harga;
+            document.getElementById('inputNamaKain').value = dataMaster.filter(x => x.KodeKain == kk)[0].NamaKain;
         });
 
         $('#btnHitung').click(function(e){
@@ -128,6 +141,9 @@
             $('#inputResultOrder').val(parseInt(resultOrder));
             $('#inputResultHari').val(parseInt(resultHari));
 
+            var acuan = parseInt(result) * parseInt(resultOrder);
+            $('#inputAcuanEOQ').val(parseInt(acuan));
+
         });
 
         $('#btnReset').click(function() {
@@ -136,6 +152,9 @@
             $('#inputHargaPembelian').val('');
             $('#inputBiayaPenyimpanan').val('');
             $('#inputResult').val('');
+            $('#inputResultOrder').val('');
+            $('#inputResultHari').val('');
+            $('#inputAcuanEOQ').val('');
         });
         
     </script>

@@ -74,8 +74,12 @@ Route::delete('/master/kain/delete/{id}', 'KainController@destroy')->name('kain_
 //Route EOQ
 Route::get('/eoq', function() {
     $kains = Kain::all();
-    return view('eoq', compact('kains'));
-});
+    return view('eoq.create', compact('kains'));
+})->name('eoq_create');
+Route::post('/eoq/store', 'EOQController@store')->name('eoq_store');
+Route::get('/eoq/index', 'EOQController@index')->name('eoq_index');
+Route::get('/eoq/edit/{id}', 'EOQController@edit')->name('eoq_edit');
+Route::get('/eoq/delete/{id}', 'EOQController@destroy')->name('eoq_delete');
 
 //Route User
 Route::view('/user/register', 'register')->name('user_register');
@@ -101,6 +105,9 @@ Route::post('/testing/order/store', 'OrderController@storeTesting')->name('testi
 Route::post('/api/testing/order/store', 'OrderController@storeTesting')->name('testing_post_order');
 Route::get('/testing/testingQuery/{KodeKain}', 'TestingController@testingQuery');
 Route::get('/testing/testingString/{word}', 'TestingController@testString');
+Route::get('/testing/message', function(){
+    return redirect()->route('stock')->with('message', 'IT WORKS !');
+})->name('testing_message');
 
 
 //api

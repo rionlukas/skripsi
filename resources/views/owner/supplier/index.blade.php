@@ -8,6 +8,11 @@
 @section('content')
 
 <h1><u>Master Supplier</u></h1>
+    @if(session()->has('message'))
+    <div class="alert alert-success">
+        {{ session()->get('message') }}
+    </div>
+    @endif
 
     <a href="/owner/supplier/create" class="btn btn-info">Supplier Baru</a>
 

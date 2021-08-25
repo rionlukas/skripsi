@@ -9,6 +9,12 @@
 
 <h1><u>Stock</u></h1>
 
+@if(session()->has('message'))
+<div class="alert alert-success">
+    {{ session()->get('message') }}
+</div>
+@endif
+
     <a href="/owner/create" class="btn btn-info">Kain Baru</a>
     <br><br>
     {{ $stocks->links() }}

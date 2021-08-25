@@ -101,6 +101,10 @@
                 </div>
             </div>
 
+            <div class="" id="div_notification">
+
+            </div>
+
             <button type="submit" class="btn btn-primary btn-lg btn-block mt-8 mb-4">Submit</button>
     </form>
 

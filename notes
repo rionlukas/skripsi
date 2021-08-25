@@ -9,7 +9,6 @@ HALAMAN EOQ
 - munculin nama/jenis kain + harga kain (harga pemebelian per unit / roll) [DONE]
 - hasil perhiutngan eoq dibuletin angkanya (misal 32.6 -> 33, 32.3 -> 32) [DONE]
 
-
 HALAMAN PEMBELIAN 
 - relasi kain + supplier (kain a -> supplier a,b,c ga semua supplier muncul) [DONE]
 - munculin notifikasi safety stock berdasarkan hasil perhitungan eoq
@@ -17,3 +16,5 @@ HALAMAN PEMBELIAN
 
 HALAMAN MASTER SUPPLIER
 - blade supplier [DONE]
+
+bikin modal : https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_modal
