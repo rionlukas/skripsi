@@ -15,7 +15,7 @@
         </div>
     @endif
     
-    <a href="/owner/create" class="btn btn-info">Kain Baru</a>
+    <a href="{{ route('eoq_create') }}" class="btn btn-info">Tambah Data EOQ</a>
 
     <table class="table">
         <thead class="table-borderless">

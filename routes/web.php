@@ -105,9 +105,13 @@ Route::post('/testing/order/store', 'OrderController@storeTesting')->name('testi
 Route::post('/api/testing/order/store', 'OrderController@storeTesting')->name('testing_post_order');
 Route::get('/testing/testingQuery/{KodeKain}', 'TestingController@testingQuery');
 Route::get('/testing/testingString/{word}', 'TestingController@testString');
-Route::get('/testing/message', function(){
-    return redirect()->route('stock')->with('message', 'IT WORKS !');
-})->name('testing_message');
+Route::get('/testing/playground', function(){
+    return view('testing.playground');
+})->name('testing_playground');
+Route::post('/testing/checkEOQ', 'TestingController@checkExistingEOQ')->name('testing_check_eoq');
+Route::get('/testing/token', function() {
+    return csrf_token();
+});
 
 
 //api

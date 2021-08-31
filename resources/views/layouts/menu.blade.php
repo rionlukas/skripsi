@@ -72,10 +72,11 @@
 
               <a href="{{ route('stock') }}" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium" id="menuStock">Stock</a>
               
-              <a href="{{ url('/eoq') }}" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium" id="menuEOQ">EOQ</a>
+              <a href="{{ route('eoq_index') }}" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium" id="menuEOQ">EOQ</a>
               
               
               <a href="{{ route('order_surat_jalan') }}" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium" id="menuSuratJalan">Surat Jalan</a>
+              <a href="{{ route('testing_playground') }}" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium" id="menuSuratJalan">Testing Page</a>
             </div>
           </div>
         </div>
