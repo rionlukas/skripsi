@@ -7,6 +7,7 @@ use App\Models\Stock;
 use App\Models\Pembelian;
 use App\Models\Kain;
 use App\Models\Supplier;
+use App\Models\EOQ;
 
 use DB;
 
@@ -157,5 +158,73 @@ class PembelianController extends Controller
 
         return $value;
     }
+
+    public function checkExistingEOQ(Request $request)
+    {
+        //check existing eoq
+        $n = array("KodeKain" => array(), "Type" => "Not Exists");
+        
+        if (is_array($request["TransactionId[]"])) {
+            for ($i = 0; $i < Count($request["TransactionId[]"]); $i++) { 
+                $data = EOQ::where('KodeKain', $request["KodeKain[]"][$i])->get();
+                if (Count($data) == 0) {
+                    array_push($n["KodeKain"], $request["KodeKain[]"][$i]);
+                }
+            }
+    
+            if (Count($n["KodeKain"]) > 0)
+            {
+                return response()->json($n);
+            }
+    
+            //check unsave stock
+    
+            $ust = array("KodeKain" => array(), "Type" => "Unsave Stock");
+            for ($i = 0; $i < Count($request["TransactionId[]"]); $i++) { 
+                $dataEOQ = EOQ::where('KodeKain', $request["KodeKain[]"][$i])->get();
+                $jmlStock = DB::table('stocks')->select('Jumlah')->where('KodeKain', $request["KodeKain[]"][$i])->get();
+                $isUnsave = $dataEOQ[$i]->AcuanEOQ - ($jmlStock[$i]->Jumlah + $request->Jumlah);
+    
+                if ($isUnsave > 0) {
+                    array_push($ust["KodeKain"], $request["KodeKain[]"][$i]);
+                }
+            }
+    
+            if (Count($ust["KodeKain"]) > 0)
+            {
+                return response()->json($ust);
+            }
+        } else {
+            // check existing eoq
+            $data = EOQ::where('KodeKain', $request["KodeKain[]"])->get();
+            if (Count($data) == 0) {
+                array_push($n["KodeKain"], $request["KodeKain[]"]);
+            }
+
+            if (Count($n["KodeKain"]) > 0)
+            {
+                return response()->json($n);
+            }
+
+            //check unsave stock
+            $ust = array("KodeKain" => array(), "Type" => "Unsave Stock");
+            $dataEOQ = EOQ::where('KodeKain', $request["KodeKain[]"])->get();
+            $jmlStock = DB::table('stocks')->select('Jumlah')->where('KodeKain', $request["KodeKain[]"])->get();
+            $isUnsave = $dataEOQ[0]->AcuanEOQ - ($jmlStock[0]->Jumlah + $request["Jumlah[]"]);
+
+            if ($isUnsave > 0) {
+                array_push($ust["KodeKain"], $request["KodeKain[]"]);
+            }
+
+            if (Count($ust["KodeKain"]) > 0)
+            {
+                return response()->json($ust);
+            }
+        }
+
+
+        return "aman";
+    }
+    
 }
 

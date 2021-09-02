@@ -105,7 +105,8 @@
 
             </div>
 
-            <button type="submit" class="btn btn-primary btn-lg btn-block mt-8 mb-4">Submit</button>
+            <button type="submit" class="btn btn-primary btn-lg btn-block mt-8 mb-4" id="btnSave" hidden=true>Submit</button>
+            <button type="button" class="btn btn-primary btn-lg btn-block mt-8 mb-4" id="btnCheckEOQ">Submit</button>
     </form>
 
     <script>
@@ -269,6 +270,7 @@
                 
             });
 
+            
         }
 
         $(function(){
@@ -285,5 +287,82 @@
           var maxDate = year + '-' + month + '-' + day;
           $('.inputTanggal').attr('min', maxDate);
         });
+    
+        $.fn.serializeObject = function()
+        {
+            var o = {};
+            var a = this.serializeArray();
+            $.each(a, function() {
+                if (o[this.name] !== undefined) {
+                    if (!o[this.name].push) {
+                        o[this.name] = [o[this.name]];
+                    }
+                    o[this.name].push(this.value || '');
+                } else {
+                    o[this.name] = this.value || '';
+                }
+            });
+            return o;
+        };
+    
+        function checkEOQ()
+        {
+            var dataForm = $('form').serializeObject();
+            var myHeaders = new Headers();
+            myHeaders.append("X-CSRF-TOKEN", dataForm._token);
+            myHeaders.append("Content-Type", "application/json");
+
+            var raw = JSON.stringify($('form').serializeObject());
+
+            var requestOptions = {
+                method: 'POST',
+                headers: myHeaders,
+                body: raw,
+                redirect: 'follow'
+            };
+
+            fetch("http://127.0.0.1:8000/owner/pembelian/checkEOQ", requestOptions)
+            .then(response => response.text())
+            .then(result => {
+                if (result != 'aman') {
+                var data = JSON.parse(result);
+                    if (data.Type == 'Not Exists') {
+                        var kk = '';
+                        if (data.KodeKain.length > 1) {
+                            data.KodeKain.forEach(n => {
+                                kk += n + ', ';
+                            });
+
+                            kk = kk.substring(0, kk.length - 2);
+                            alert('Kode Kain ' + kk + ' Belum didaftarkan di perhitungan EOQ');
+                        } else 
+                        {
+                            alert('Kode Kain ' + data.Kodekain + ' Belum didaftarkan di perhitungan EOQ');
+                        }
+                    } else {
+                        var kk = '';
+                        if (data.KodeKain.length > 1) {
+                            data.KodeKain.forEach(n => {
+                                kk += n;
+                            });
+
+                            kk = kk.substring(0, kk.length - 2);
+                            alert('Kode Kain ' + kk + 'Belum mencapai save stock');
+                        } else 
+                        {
+                            alert('Kode Kain ' + data.KodeKain + ' Belum mencapai save stock');
+                        }
+                    }
+                }
+
+                $('#btnSave').click();
+            })
+            .catch(error => console.log('error', error));
+        }
+
+        $('#btnCheckEOQ').click(function(e) {
+            checkEOQ();
+        });
+
     </script>
 @endsection
