@@ -15,7 +15,7 @@
                 <div class="col-md">
                     <div class="mb-3">
                         <label for="inputOrderID" class="form-label">Order ID</label>
-                        <input type="text" class="form-control" id="inputOrderId" name="OrderId[]">
+                        <input type="text" class="form-control" id="inputOrderId" name="OrderId[]" readonly=true>
                     </div>
                 </div>
 
@@ -84,7 +84,7 @@
                 <div class="col-md">
                     <div class="mb-1">
                         <label for="inputTanggal" class="form-label">Tanggal Beli</label>
-                        <input type="date" class="form-control inputTanggal" id="inputTanggal" name="Tanggal[]">
+                        <input type="date" class="form-control inputTanggal" id="inputTanggal" name="Tanggal[]" disabled=true>
                     </div>
                 </div>
 
@@ -176,14 +176,14 @@
                         <div class="col-md">
                             <div class="mb-3">
                                 <label for="inputOrderID" class="form-label">Order ID</label>
-                                <input type="text" class="form-control" id="inputOrderId" name="OrderId[]">
+                                <input type="text" class="form-control inputOrderId" id="inputOrderId" name="OrderId[]" readonly=true>
                             </div>
                         </div>
 
                         <div class="col-md">
                             <div class="mb-3">
                                 <label for="inputNamaCustomer" class="form-label">Nama Customer</label>
-                                <input type="text" class="form-control" id="inputNamaCustomer" name="NamaCustomer[]">
+                                <input type="text" class="form-control inputNamaCustomer" id="inputNamaCustomer" name="NamaCustomer[]">
                             </div>
                         </div>
 
@@ -243,7 +243,7 @@
                         <div class="col-md">
                             <div class="mb-1">
                                 <label for="inputTanggal" class="form-label">Tanggal Beli</label>
-                                <input type="date" class="form-control inputTanggal" id="inputTanggal" name="Tanggal[]">
+                                <input type="date" class="form-control inputTanggal" id="inputTanggal" name="Tanggal[]" disabled=true>
                             </div>
                         </div>
 
@@ -292,6 +292,18 @@
                 $(e.target).closest('.induk').find('.inputTotalHarga').val(result);
 
             });
+
+            $('.inputNamaCustomer').change(function(e)
+            {
+                $(e.target).closest('.induk').find('.inputOrderId').val('order_' + this.value);
+                $(e.target).closest('.induk').find('.inputTanggal').prop('disabled', false);
+            });
+
+            $('.inputTanggal').change(function(e)
+            {
+                var orderId = $(e.target).closest('.induk').find('.inputOrderId').val();
+                $(e.target).closest('.induk').find('.inputOrderId').val(orderId + '_' + this.value);
+            });
         }
 
         $(function(){
@@ -308,6 +320,18 @@
           var maxDate = year + '-' + month + '-' + day;
           $('.inputTanggal').attr('min', maxDate);
         });
+
+        $('#inputNamaCustomer').change(function()
+        {
+            $('#inputOrderId').val('order_' + this.value);
+            $('#inputTanggal').prop('disabled', false);
+        });
+
+        $('#inputTanggal').change(function()
+        {
+            var orderId = $('#inputOrderId').val();
+            $('#inputOrderId').val(orderId + '_' + this.value)
+        })
     
     </script>
 @endsection

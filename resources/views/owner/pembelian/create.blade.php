@@ -15,7 +15,7 @@
                 <div class="col-md">
                     <div class="mb-3">
                         <label for="inputTransactionId" class="form-label">ID Transaksi</label>
-                        <input type="text" class="form-control" id="inputTransactionId" name="TransactionId[]">
+                        <input type="text" class="form-control" id="inputTransactionId" name="TransactionId[]" readonly=true>
                     </div>
                 </div>
 
@@ -67,7 +67,7 @@
                 <div class="col-md">
                     <div class="mb-1">
                       <label for="inputTanggal" class="form-label">Tanggal</label>
-                      <input type="date" class="form-control inputTanggal" id="inputTanggal" name="Tanggal[]">
+                      <input type="date" class="form-control inputTanggal" id="inputTanggal" name="Tanggal[]" disabled=true>
                     </div>
                 </div>
     
@@ -153,7 +153,7 @@
             document.getElementById('inputStockQty').value = dataMaster.filter(x => x.KodeKain == kk)[0].qty;
 
             var supId = dataMaster.filter(x => x.KodeKain == kk)[0].SupplierId;
-            document.getElementById('inputSupplier').value = dataSupplier.filter(x => x.id == supId)[0].NamaSupplier;
+            $('#inputSupplier').val(dataSupplier.filter(x => x.id == supId)[0].NamaSupplier).change();
         });
     
 
@@ -171,7 +171,7 @@
                         <div class="col-md">
                             <div class="mb-3">
                                 <label for="inputTransactionId" class="form-label">ID Transaksi</label>
-                                <input type="text" class="form-control inputTransactionId" id="inputTransactionId" name="TransactionId[]">
+                                <input type="text" class="form-control inputTransactionId" id="inputTransactionId" name="TransactionId[]" readonly=true>
                             </div>
                         </div>
                         
@@ -223,7 +223,7 @@
                         <div class="col-md">
                             <div class="mb-1">
                             <label for="inputTanggal" class="form-label">Tanggal</label>
-                            <input type="date" class="form-control inputTanggal" id="inputTanggal" name="Tanggal[]">
+                            <input type="date" class="form-control inputTanggal" id="inputTanggal" disabled=true name="Tanggal[]">
                             </div>
                         </div>
             
@@ -266,11 +266,21 @@
                 $(e.target).closest('.induk').find('.inputStockQty').val(dataMaster.filter(x => x.KodeKain == kk)[0].qty);
                 
                 var supId = dataMaster.filter(x => x.KodeKain == kk)[0].SupplierId;
-                $(e.target).closest('.induk').find('.inputSupplier').val(dataSupplier.filter(x => x.id == supId)[0].NamaSupplier);
+                $(e.target).closest('.induk').find('.inputSupplier').val(dataSupplier.filter(x => x.id == supId)[0].NamaSupplier).change();
                 
             });
 
-            
+            $('.inputSupplier').change(function(e)
+            {
+                $(e.target).closest('.induk').find('.inputTransactionId').val('trx_' + this.value);
+                $(e.target).closest('.induk').find('.inputTanggal').prop('disabled', false);
+            });
+
+            $('.inputTanggal').change(function(e)
+            {
+                var trxId = $(e.target).closest('.induk').find('.inputTransactionId').val();
+                $(e.target).closest('.induk').find('.inputTransactionId').val(trxId + '_' + this.value);
+            })
         }
 
         $(function(){
@@ -364,5 +374,18 @@
             checkEOQ();
         });
 
+        $('#inputSupplier').change(function(e)
+        {
+            debugger;
+            var supValue = this.value.replace(/\s/g,'');
+            $('#inputTransactionId').val('trx_'+ supValue).change();
+            $('#inputTanggal').prop('disabled', false);
+        });
+
+        $('#inputTanggal').change(function()
+        {
+           var trxId =  $('#inputTransactionId').val();
+           $('#inputTransactionId').val(trxId + '_' + this.value).change();
+        });
     </script>
 @endsection
