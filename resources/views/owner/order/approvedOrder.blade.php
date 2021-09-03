@@ -7,7 +7,7 @@
 
 @section('content')
 
-<h1><u>Persetujuan Order</u></h1>
+<h1><u>Report Order</u></h1>
 
     @if(session()->has('message'))
     <div class="alert alert-success">
@@ -38,7 +38,7 @@
                     <td>{{ $order->KodeKain }}</td>
                     <td>{{ $order->NamaKain }}</td>
                     <td>{{ $order->JenisKain }}</td>
-                    <td>{{ $order->Jumlah }}</td>
+                    <td>{{ $order->JumlahAcc }}</td>
                     <td>{{ $order->Harga }}</td>
                     <td>{{ $order->TotalHarga }}</td>
                     <td>{{ $order->TanggalOrder }}</td>

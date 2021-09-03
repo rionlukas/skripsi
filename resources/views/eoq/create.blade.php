@@ -24,17 +24,17 @@
         </div>
 
         <div class="mb-3">
-            <label for="inputJumlahUnit" class="form-label">Jumlah Unit</label>
+            <label for="inputJumlahUnit" class="form-label">Jumlah Roll yang Dibutuhkan Dalam 1 Periode</label>
             <input type="number" class="form-control" id="inputJumlahUnit" name="JumlahUnit">
         </div>
 
         <div class="mb-3">
-            <label for="inputBiayaPesanan" class="form-label">Biaya Pesanan</label>
+            <label for="inputBiayaPesanan" class="form-label">Biaya Pemesanan Barang (Ongkir, Packing, etc)</label>
             <input type="number" class="form-control" id="inputBiayaPesanan" name="BiayaPesanan">
         </div>
 
         <div class="mb-3">
-            <label for="inputHargaPembelian" class="form-label">Harga Pembelian Per Unit</label>
+            <label for="inputHargaPembelian" class="form-label">Harga Pembelian Per Unit (Roll)</label>
             <input type="number" class="form-control" id="inputHargaPembelian" name="HargaPembelian">
         </div>
 
@@ -49,7 +49,7 @@
         </div>
 
         <div class="mb-3">
-            <label for="inputResult" class="form-label">Hasil Perhitungan EOQ</label>
+            <label for="inputResult" class="form-label">Hasil Perhitungan EOQ (Jumlah Pembelian Roll yang Diusulkan Dalam 1 Kali Pembelian)</label>
             <input type="number" class="form-control" id="inputResult" name="EOQ" readonly=true> 
         </div>
 
@@ -59,12 +59,12 @@
         </div>
 
         <div class="mb-3">
-            <label for="inputResultHari" class="form-label">Dilakukan Selama : </label>
+            <label for="inputResultHari" class="form-label">Frekuensi Order (Hari) : </label>
             <input type="number" class="form-control" id="inputResultHari" name="FrekuensiOrder" readonly=true> 
         </div>
 
         <div class="mb-3">
-            <label for="inputAcuanEOQ" class="form-label">Acuan EOQ : </label>
+            <label for="inputAcuanEOQ" class="form-label">Safety Stock : </label>
             <input type="number" class="form-control" id="inputAcuanEOQ" name="AcuanEOQ" readonly=true> 
         </div>
 

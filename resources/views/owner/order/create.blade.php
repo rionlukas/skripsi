@@ -318,7 +318,7 @@
           if(day < 10)
               day = '0' + day.toString();
           
-          var maxDate = year + '-' + month + '-' + day;
+          var maxDate = year + '' + month + '' + day;
           $('.inputTanggal').attr('min', maxDate);
         });
 

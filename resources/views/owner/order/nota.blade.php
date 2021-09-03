@@ -18,9 +18,17 @@
             }
         </style>
 
-<h1><e><u>Nota Order</u></e></h1>
+<p><b>CV.Tujuh Benua Mas</b></p>
+<p>Jl. Babatan no.66A</p>       
+<p>08213342148</p>       
+<h2><e><u>Nota Order</u></e></h1>
+<br>
+<hr style="border: 1px solid rgb(7, 17, 105);">
 
-<table>
+    <div class="row">
+        <div>
+      
+        <table>
     <tr>   
         <th></th> 
         <th></th>
@@ -29,35 +37,43 @@
         <th>{{ $orders[0]->NamaCustomer }}</th>
     </tr>                  
     <tr>
-        <th>Order Id : </th>
+        <th>Order Id  </th>
+        <th>:</th>
         <th>{{ $orders[0]->OrderId }}</th>
-        <th></th>
         <th></th>
         <th>{{ $orders[0]->Alamat }}</th>
     </tr>
     <tr>
-        <th>Tanggal : </th>
+        <th>Tanggal </th>
+        <th>:</th>
         <th>{{ $orders[0]->TanggalOrder }}</th>
         <th></th>
         <th></th>
-        <th></th>
     </tr>
+        </table>
+    
+        </div>
+        </div>    
+        <hr style="border: 1px solid rgb(7, 17, 105);">
 
+            <div class="row">
+                <div>
     @foreach ($orders as $order)
-
+    
+    <table style="border: 1px;">
         <tr>
-            <th>Nama Kain : </th>
-            <th>{{ $order->NamaKain }}</th>
+            <th>Nama Kain </th>
+            <th>Jumlah Rol</th>
             <th></th>
-            <th>Jumlah Dalam Rol</th>
+            <th></th>
             <th></th>
         </tr>
 
         <tr>
-            <th></th>
-            <th></th>
-            <th></th>
+            <th>{{ $order->NamaKain }}</th>
             <th>{{ $order->Jumlah }}</th>
+            <th></th>
+            <th></th>
             <th></th>
         </tr>
 
@@ -73,9 +89,11 @@
         <tr>
             <td></td>
             <td></td>
-            <td>Total Harga: {{ $totals }}</td>
-            <td></td>
-            <td></td>
+            <td>Total Harga</td>
+            <td>:</td>
+            <td> {{ $totals }}</td>
         </tr>
-</table>
-            
+    </table>
+    </div>
+</div>
+<hr style="border: 1px solid red;">            

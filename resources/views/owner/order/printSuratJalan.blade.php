@@ -19,9 +19,12 @@
 </style>
         </style>
 
+<p><b>CV.Tujuh Benua Mas</b></p>
+<p>Jl. Babatan no.66A</p>       
+<p>08213342148</p>            
 <h1><u>Surat Jalan</u></h1>
 
-<table>
+<hr style="border: 1px solid rgb(7, 17, 105);">
     <table>
         <tr>   
             @foreach ($orders as $order)
@@ -50,7 +53,7 @@
                 <th>Nama Kain : </th>
                 <th>{{ $order->NamaKain }}</th>
                 <th></th>
-                <th>Jumlah Dalam Rol</th>
+                <th>Jumlah Rol</th>
                 <th></th>
             </tr>
 
