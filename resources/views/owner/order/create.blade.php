@@ -295,12 +295,13 @@
 
             $('.inputNamaCustomer').change(function(e)
             {
-                $(e.target).closest('.induk').find('.inputOrderId').val('order_' + this.value);
+                $(e.target).closest('.induk').find('.inputOrderId').val('');
                 $(e.target).closest('.induk').find('.inputTanggal').prop('disabled', false);
             });
 
             $('.inputTanggal').change(function(e)
             {
+                $(e.target).closest('.induk').find('.inputOrderId').val('');
                 var orderId = $(e.target).closest('.induk').find('.inputOrderId').val();
                 $(e.target).closest('.induk').find('.inputOrderId').val(orderId + '_' + this.value);
             });
@@ -324,7 +325,6 @@
         $('#inputNamaCustomer').change(function()
         {
             $('#inputOrderId').val('');
-            $('#inputOrderId').val('order_' + this.value);
             $('#inputTanggal').prop('disabled', false);
         });
 

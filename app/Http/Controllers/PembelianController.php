@@ -8,6 +8,7 @@ use App\Models\Pembelian;
 use App\Models\Kain;
 use App\Models\Supplier;
 use App\Models\EOQ;
+use PDF;
 
 use DB;
 
@@ -42,6 +43,7 @@ class PembelianController extends Controller
         $tgl = $request->Tanggal;
         $keterangan = $request->Keterangan;
         $status = $request->Status;
+        $totalHarga = $request->TotalHarga;
 
         for ($i=0; $i < Count($request->TransactionId); $i++) { 
             $dataSave = [
@@ -54,7 +56,8 @@ class PembelianController extends Controller
                 'TanggalPembelian' => $tgl[$i],
                 'Keterangan' => $keterangan[$i],
                 'Status' => $status[$i],
-                'JumlahAcc' => 0
+                'JumlahAcc' => 0,
+                'TotalHarga' => $totalHarga[$i],
             ];
 
             Pembelian::create($dataSave);
@@ -224,6 +227,18 @@ class PembelianController extends Controller
 
 
         return "aman";
+    }
+
+    public function printNota($transactionId)
+    {
+        $orders = Pembelian::where('TransactionId', $transactionId)->get();
+        $totals = 0;
+        foreach ($orders as $item) {
+            $totals += $item->TotalHarga;
+        } 
+        view()->share('owner.pembelian.nota', $orders);
+        $pdf = PDF::loadView('owner.pembelian.nota', ['orders' => $orders, 'totals' => $totals]);
+        return $pdf->download('nota pembelian.pdf');
     }
     
 }

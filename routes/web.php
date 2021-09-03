@@ -52,6 +52,7 @@ Route::get('/owner/pembelian/create', 'PembelianController@create')->name('pembe
 Route::post('/owner/pembelian/insert', 'PembelianController@store')->name('pembelian_insert');
 Route::get('/owner/pembelian/approve/{id}/{value}', 'PembelianController@approval')->name('pembelian_approval');
 Route::post('/owner/pembelian/checkEOQ', 'PembelianController@checkExistingEOQ')->name('pembelian_check_eoq');
+Route::get('/owner/pembelian/nota/{transactionId}', 'PembelianController@printNota')->name('pembelian_print_nota');
 
 //Route order
 Route::get('owner/order', 'OrderController@index')->name('order_acc');

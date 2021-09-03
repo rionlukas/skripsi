@@ -18,31 +18,32 @@
             }
         </style>
 
-<h1><e><u>Nota</u></e></h1>
+<h1><e><u>Nota Order</u></e></h1>
 
 <table>
+    <tr>   
+        <th></th> 
+        <th></th>
+        <th></th>
+        <th>Kepada Yth : </th>
+        <th>{{ $orders[0]->NamaCustomer }}</th>
+    </tr>                  
+    <tr>
+        <th>Order Id : </th>
+        <th>{{ $orders[0]->OrderId }}</th>
+        <th></th>
+        <th></th>
+        <th>{{ $orders[0]->Alamat }}</th>
+    </tr>
+    <tr>
+        <th>Tanggal : </th>
+        <th>{{ $orders[0]->TanggalOrder }}</th>
+        <th></th>
+        <th></th>
+        <th></th>
+    </tr>
+
     @foreach ($orders as $order)
-        <tr>   
-            <th></th> 
-            <th></th>
-            <th></th>
-            <th>Kepada Yth : </th>
-            <th>{{ $order->NamaCustomer }}</th>
-        </tr>                  
-        <tr>
-            <th>Order Id : </th>
-            <th>{{ $order->OrderId }}</th>
-            <th></th>
-            <th></th>
-            <th>{{ $order->Alamat }}</th>
-        </tr>
-        <tr>
-            <th>Tanggal : </th>
-            <th>{{ $order->TanggalOrder }}</th>
-            <th></th>
-            <th></th>
-            <th></th>
-        </tr>
 
         <tr>
             <th>Nama Kain : </th>
@@ -54,7 +55,7 @@
 
         <tr>
             <th></th>
-            <th>{{ $order->NamaKain }}</th>
+            <th></th>
             <th></th>
             <th>{{ $order->Jumlah }}</th>
             <th></th>

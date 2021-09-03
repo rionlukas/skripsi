@@ -37,7 +37,7 @@
                     
                     <td>
                         <form>
-                            <a class="btn btn-success btn-sm" href="#">Detail</a>                       
+                            <a class="btn btn-success btn-sm" href="{{ route('pembelian_print_nota', $pembelian->TransactionId) }}">Detail</a>                       
                         </form>
                     </td>
             </tbody>
