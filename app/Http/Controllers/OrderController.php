@@ -206,9 +206,12 @@ class OrderController extends Controller
     public function printNota($orderId)
     {
         $orders = Order::where('OrderId', $orderId)->get();
-        
+        $totals = 0;
+        foreach ($orders as $item) {
+            $totals += $item->TotalHarga;
+        } 
         view()->share('owner.order.nota', $orders);
-        $pdf = PDF::loadView('owner.order.nota', ['orders' => $orders]);
+        $pdf = PDF::loadView('owner.order.nota', ['orders' => $orders, 'totals' => $totals]);
         return $pdf->download('nota.pdf');
     }
 

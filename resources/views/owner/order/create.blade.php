@@ -323,6 +323,7 @@
 
         $('#inputNamaCustomer').change(function()
         {
+            $('#inputOrderId').val('');
             $('#inputOrderId').val('order_' + this.value);
             $('#inputTanggal').prop('disabled', false);
         });
@@ -330,7 +331,8 @@
         $('#inputTanggal').change(function()
         {
             var orderId = $('#inputOrderId').val();
-            $('#inputOrderId').val(orderId + '_' + this.value)
+            $('#inputOrderId').val('');
+            $('#inputOrderId').val(orderId + '_' + this.value);
         })
     
     </script>

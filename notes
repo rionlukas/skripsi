@@ -22,7 +22,7 @@ bikin modal : https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_moda
 ==================================================================
 1. notifikasi eoq di halaman pembelian [DONE]
 2. id transaksi -> unique [DONE]
-3. order id -> unique
-4. di nota order tanggal aja jgn ada jamnya
+3. order id -> unique [DONE]
+4. di nota order tanggal aja jgn ada jamnya [DONE]
 5. di nota order tambahin total harga semua kain
 6. surat jalan error

@@ -16,68 +16,65 @@
 
                 tr:nth-child(even) {background-color: #f2f2f2;
             }
-</style>
         </style>
 
-<h1><e><u>Surat Jalan</u></e></h1>
+<h1><e><u>Nota</u></e></h1>
 
 <table>
-    <table>
+    @foreach ($orders as $order)
         <tr>   
-            @foreach ($orders as $order)
             <th></th> 
-                <th></th>
-                <th></th>
-                <th>Kepada Yth : </th>
-                <th>{{ $order->NamaCustomer }}</th>
-            </tr>                  
-            <tr>
-                <th>Order Id : </th>
-                <th>{{ $order->OrderId }}</th>
-                <th></th>
-                <th></th>
-                <th>{{ $order->Alamat }}</th>
-            </tr>
-            <tr>
-                <th>Tanggal : </th>
-                <th>{{ $order->Tanggal }}</th>
-                <th></th>
-                <th></th>
-                <th></th>
-            </tr>
+            <th></th>
+            <th></th>
+            <th>Kepada Yth : </th>
+            <th>{{ $order->NamaCustomer }}</th>
+        </tr>                  
+        <tr>
+            <th>Order Id : </th>
+            <th>{{ $order->OrderId }}</th>
+            <th></th>
+            <th></th>
+            <th>{{ $order->Alamat }}</th>
+        </tr>
+        <tr>
+            <th>Tanggal : </th>
+            <th>{{ $order->TanggalOrder }}</th>
+            <th></th>
+            <th></th>
+            <th></th>
+        </tr>
 
-            <tr>
-                <th>Nama Kain : </th>
-                <th>{{ $order->NamaKain }}</th>
-                <th></th>
-                <th>Jumlah Dalam Rol</th>
-                <th></th>
-            </tr>
+        <tr>
+            <th>Nama Kain : </th>
+            <th>{{ $order->NamaKain }}</th>
+            <th></th>
+            <th>Jumlah Dalam Rol</th>
+            <th></th>
+        </tr>
 
-            <tr>
-                <th></th>
-                <th>{{ $order->NamaKain }}</th>
-                <th></th>
-                <th>{{ $order->Jumlah }}</th>
-                <th></th>
-            </tr>
+        <tr>
+            <th></th>
+            <th>{{ $order->NamaKain }}</th>
+            <th></th>
+            <th>{{ $order->Jumlah }}</th>
+            <th></th>
+        </tr>
 
- 
-            <tr>
-                <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-            <tr>
-                    <td></td>
-                    <td></td>
-                    <td>Total : </td>
-                    <td></td>
-                    <td></td>
-                </tr>
-                @endforeach
-                
-            </table>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        @endforeach
+        
+        <tr>
+            <td></td>
+            <td></td>
+            <td>Total Harga: {{ $totals }}</td>
+            <td></td>
+            <td></td>
+        </tr>
+</table>
             
