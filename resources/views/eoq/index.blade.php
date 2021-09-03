@@ -9,9 +9,15 @@
 
 <h1><u>Data EOQ</u></h1>
 
-    @if(session()->has('message'))
+    @if(session()->has('Success'))
         <div class="alert alert-success">
-            {{ session()->get('message') }}
+            {{ session()->get('Success') }}
+        </div>
+    @endif
+
+    @if(session()->has('Deleted'))
+        <div class="alert alert-danger">
+            {{ session()->get('Deleted') }}
         </div>
     @endif
     

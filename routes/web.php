@@ -81,7 +81,8 @@ Route::get('/eoq', function() {
 Route::post('/eoq/store', 'EOQController@store')->name('eoq_store');
 Route::get('/eoq/index', 'EOQController@index')->name('eoq_index');
 Route::get('/eoq/edit/{id}', 'EOQController@edit')->name('eoq_edit');
-Route::get('/eoq/delete/{id}', 'EOQController@destroy')->name('eoq_delete');
+Route::put('/eoq/update/{id}', 'EOQController@update')->name('eoq_update');
+Route::delete('/eoq/delete/{id}', 'EOQController@destroy')->name('eoq_delete');
 
 //Route User
 Route::view('/user/register', 'register')->name('user_register');

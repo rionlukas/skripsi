@@ -22,16 +22,20 @@ class EOQController extends Controller
 
     public function edit($id)
     {
-
+        $eoq = EOQ::findorfail($id);
+        $kains = Kain::all();
+        return view('eoq.edit', ["eoq" => $eoq, "kains" => $kains]);
     }
 
     public function update(Request $request, $id)
     {
-
+        EOQ::find($id)->update($request->all());
+        return redirect()->route('eoq_index')->with('Success', 'Data Telah Diperbaharui !');
     }
 
     public function destroy($id)
     {
-
+        EOQ::find($id)->delete();
+        return redirect()->route('eoq_index')->with('Deleted', 'Data Telah Dihapus !');
     }
 }
