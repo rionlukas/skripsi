@@ -52,6 +52,16 @@ class StockController extends Controller
               'Keterangan' => '',
               'Supplier' => ''
           ]);
+
+          $existing = Stock::where('KodeKain', $request->KodeKain)->get();
+
+          if (Count($existing) > 0) {
+              $jmlUpdated = $existing[0]->Jumlah + $request->Jumlah;
+              Stock::find($existing[0]->id)->update([
+                  'Jumlah' => $jmlUpdated 
+              ]);
+              return redirect()->route('stock')->with('success', 'Kain ' . $request->NamaKain . ' berhasil diupdate');
+          }
         
           $input = $request->all();
         
