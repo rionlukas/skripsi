@@ -105,7 +105,6 @@ class OrderController extends Controller
     public function approvedOrder() 
     {
         $orders = DB::table('orders')
-                ->where('Status', '=', 'Disetujui')
                 ->orderBy('id', 'DESC')
                 ->get();
 

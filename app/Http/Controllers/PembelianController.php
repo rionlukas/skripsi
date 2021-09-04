@@ -133,7 +133,7 @@ class PembelianController extends Controller
     public function approvedPembelian() 
     {
         $pembelians = DB::table('pembelians')
-                ->where('Status', '=', 'Disetujui')
+                ->orderBy('id', 'DESC')
                 ->get();
 
         return view('owner.pembelian.approvedPembelian')->with(compact('pembelians'));
