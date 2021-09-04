@@ -293,7 +293,7 @@
 
             });
 
-            $('.inputNamaCustomer').change(function(e)
+        $('.inputNamaCustomer').change(function(e)
             {
                 $(e.target).closest('.induk').find('.inputOrderId').val('');
                 // $(e.target).closest('.induk').find('.inputTanggal').prop('disabled', false);
@@ -302,8 +302,8 @@
             $('.inputTanggal').change(function(e)
             {
                 $(e.target).closest('.induk').find('.inputOrderId').val('');
-                var orderId = $(e.target).closest('.induk').find('.inputOrderId').val();
-                $(e.target).closest('.induk').find('.inputOrderId').val(orderId + '_' + this.value);
+                var extractTgl = this.value.replace(/-/g,'');
+                $(e.target).closest('.induk').find('.inputOrderId').val('order_' + extractTgl);
             });
         }
 

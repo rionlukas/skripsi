@@ -314,7 +314,9 @@
             $('.inputTanggal').change(function(e)
             {
                 var trxId = $(e.target).closest('.induk').find('.inputTransactionId').val();
-                $(e.target).closest('.induk').find('.inputTransactionId').val(trxId + '_' + this.value);
+                $(e.target).closest('.induk').find('.inputTransactionId').val();
+                var extractTgl = this.value.replace(/-/g,'');
+                $(e.target).closest('.induk').find('.inputTransactionId').val(trxId + '_' + extractTgl);
             });
 
             $('.inputJumlahKain').change(function(e)
