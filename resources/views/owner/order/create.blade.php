@@ -84,7 +84,7 @@
                 <div class="col-md">
                     <div class="mb-1">
                         <label for="inputTanggal" class="form-label">Tanggal Beli</label>
-                        <input type="date" class="form-control inputTanggal" id="inputTanggal" name="Tanggal[]" disabled=true>
+                        <input type="date" class="form-control inputTanggal" id="inputTanggal" name="Tanggal[]">
                     </div>
                 </div>
 
@@ -243,7 +243,7 @@
                         <div class="col-md">
                             <div class="mb-1">
                                 <label for="inputTanggal" class="form-label">Tanggal Beli</label>
-                                <input type="date" class="form-control inputTanggal" id="inputTanggal" name="Tanggal[]" disabled=true>
+                                <input type="date" class="form-control inputTanggal" id="inputTanggal" name="Tanggal[]">
                             </div>
                         </div>
 
@@ -296,7 +296,7 @@
             $('.inputNamaCustomer').change(function(e)
             {
                 $(e.target).closest('.induk').find('.inputOrderId').val('');
-                $(e.target).closest('.induk').find('.inputTanggal').prop('disabled', false);
+                // $(e.target).closest('.induk').find('.inputTanggal').prop('disabled', false);
             });
 
             $('.inputTanggal').change(function(e)
@@ -325,7 +325,7 @@
         $('#inputNamaCustomer').change(function()
         {
             $('#inputOrderId').val('');
-            $('#inputTanggal').prop('disabled', false);
+            // $('#inputTanggal').prop('disabled', false);
         });
 
         $('#inputTanggal').change(function()
