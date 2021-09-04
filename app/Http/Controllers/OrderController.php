@@ -106,6 +106,7 @@ class OrderController extends Controller
     {
         $orders = DB::table('orders')
                 ->where('Status', '=', 'Disetujui')
+                ->orderBy('id', 'DESC')
                 ->get();
 
         return view('owner.order.approvedOrder')->with(compact('orders'));
@@ -147,14 +148,19 @@ class OrderController extends Controller
     public function printSuratJalan($orderId)
     {
         $orders = DB::select(DB::raw("
-            SELECT a.*, b.NamaCustomer
+            SELECT a.*, b.NamaCustomer, b.TotalHarga
             FROM surat_jalans a
             LEFT JOIN orders b ON a.OrderId = b.OrderId
             WHERE b.OrderId = '$orderId'
         "));
 
+        $totals = 0;
+        foreach ($orders as $item) {
+            $totals += $item->TotalHarga;
+        } 
+
         view()->share('owner.order.printSuratJalan', $orders);
-        $pdf = PDF::loadView('owner.order.printSuratJalan', ['orders' => $orders]);
+        $pdf = PDF::loadView('owner.order.printSuratJalan', ['orders' => $orders, 'totals' => $totals]);
         return $pdf->download('suratjalan.pdf');
     }
 

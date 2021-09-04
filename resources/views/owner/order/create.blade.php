@@ -330,9 +330,9 @@
 
         $('#inputTanggal').change(function()
         {
-            var orderId = $('#inputOrderId').val();
+            var extractTgl = this.value.replace(/-/g,'');
             $('#inputOrderId').val('');
-            $('#inputOrderId').val(orderId + '_' + this.value);
+            $('#inputOrderId').val('order_' + extractTgl);
         })
     
     </script>

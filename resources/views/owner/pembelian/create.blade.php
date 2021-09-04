@@ -429,7 +429,8 @@
         {
            var trxId =  $('#inputTransactionId').val();
            $('#inputTransactionId').val('');
-           $('#inputTransactionId').val(trxId + '_' + this.value).change();
+           var extractTgl = this.value.replace(/-/g,'');
+           $('#inputTransactionId').val(trxId + '_' + extractTgl).change();
         });
     </script>
 @endsection
