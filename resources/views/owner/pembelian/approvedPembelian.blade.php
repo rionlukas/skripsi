@@ -29,7 +29,7 @@
                     <td>{{ $pembelian->KodeKain }}</td>
                     <td>{{ $pembelian->NamaKain }}</td>
                     <td>{{ $pembelian->JenisKain }}</td>
-                    <td>{{ $pembelian->Jumlah }}</td>
+                    <td>{{ $pembelian->JumlahAcc }}</td>
                     <td>{{ $pembelian->Supplier }}</td>
                     <td>{{ $pembelian->TanggalPembelian }}</td>
                     <td>{{ $pembelian->Keterangan }}</td>

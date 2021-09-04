@@ -19,6 +19,9 @@
 </style>
         </style>
 
+<p><b>CV.Tujuh Benua Mas</b></p>
+<p>Jl. Babatan no.66A</p>       
+<p>08213342148</p>            
 <h1><u>Surat Jalan</u></h1>
 
 <table>

@@ -19,26 +19,30 @@
 </style>
         </style>
 
-<h1><e><u>Nota Pembelian</u></e></h1>
 
+<p><b>CV.Tujuh Benua Mas</b></p>
+<p>Jl. Babatan no.66A</p>        
+<h1><e><u>Faktur Pembelian</u></e></h1>
+<br>
+<hr />
 <table>
         <tr>   
             <th></th> 
             <th></th>
             <th></th>
             <th>Kepada Yth : </th>
-            <th>{{ $orders[0]->NamaCustomer }}</th>
+            <th>{{ $pembelians[0]->NamaCustomer }}</th>
         </tr>                  
         <tr>
-            <th>Order Id : </th>
-            <th>{{ $orders[0]->OrderId }}</th>
+            <th>Transaksi Id : </th>
+            <th>{{ $pembelians[0]->TransactionId }}</th>
             <th></th>
             <th></th>
-            <th>{{ $orders[0]->Alamat }}</th>
+            <th>{{ $pembelians[0]->Alamat }}</th>
         </tr>
         <tr>
             <th>Tanggal : </th>
-            <th>{{ $orders[0]->Tanggal }}</th>
+            <th>{{ $pembelians[0]->Tanggal }}</th>
             <th></th>
             <th></th>
             <th></th>
@@ -47,7 +51,7 @@
         @foreach ($orders as $order)
         <tr>
             <th>Nama Kain : </th>
-            <th>{{ $order->NamaKain }}</th>
+            <th>{{ $pembelians->NamaKain }}</th>
             <th></th>
             <th>Jumlah Dalam Rol</th>
             <th></th>
@@ -57,7 +61,7 @@
             <th></th>
             <th></th>
             <th></th>
-            <th>{{ $order->Jumlah }}</th>
+            <th>{{ $pembelians->Jumlah }}</th>
             <th></th>
         </tr>
 
