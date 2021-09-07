@@ -401,11 +401,11 @@
 
                             kk = kk.substring(0, kk.length - 2);
                             alert('Kode Kain ' + kk + 'Belum mencapai save stock');
-                            return;
+                            $('#btnSave').click();
                         } else 
                         {
                             alert('Kode Kain ' + data.KodeKain + ' Belum mencapai save stock');
-                            return;
+                            $('#btnSave').click();
                         }
                     }
                 } else
