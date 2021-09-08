@@ -21,7 +21,7 @@
 <p><b>CV.Tujuh Benua Mas</b></p>
 <p>Jl. Babatan no.66A</p>       
 <p>08213342148</p>       
-<h2><e><u>Nota Order</u></e></h1>
+<h2><e><u>Nota Order</u></e></h2>
 <br>
 <hr style="border: 1px solid rgb(7, 17, 105);">
 

@@ -19,52 +19,65 @@
 </style>
         </style>
 
-<p><b>CV.Tujuh Benua Mas</b></p>
+        <p><b>CV.Tujuh Benua Mas</b></p>
 <p>Jl. Babatan no.66A</p>       
-<p>08213342148</p>            
-<h1><u>Surat Jalan</u></h1>
+<p>08213342148</p>       
+<h2><e><u>Surat Jalan</u></e></h2>
+<br>
+<hr style="border: 1px solid rgb(7, 17, 105);">
 
-<table>
-        <tr>   
-            <th></th> 
-            <th></th>
-            <th></th>
-            <th>Kepada Yth : </th>
-            <th>{{ $orders[0]->NamaCustomer }}</th>
-        </tr>                  
+    <div class="row">
+        <div>
+      
+        <table>
+    <tr>   
+        <th></th> 
+        <th></th>
+        <th></th>
+        <th>Kepada Yth : </th>
+        <th>{{ $orders[0]->NamaCustomer }}</th>
+    </tr>                  
+    <tr>
+        <th>Order Id  </th>
+        <th>:</th>
+        <th>{{ $orders[0]->OrderId }}</th>
+        <th></th>
+        <th>{{ $orders[0]->Alamat }}</th>
+    </tr>
+    <tr>
+        <th>Tanggal </th>
+        <th>:</th>
+        <th>{{ $orders[0]->Tanggal }}</th>
+        <th></th>
+        <th></th>
+    </tr>
+        </table>
+    
+        </div>
+        </div>    
+        <hr style="border: 1px solid rgb(7, 17, 105);">
+
+            <div class="row">
+                <div>
+    @foreach ($orders as $order)
+    
+    <table style="border: 1px;">
         <tr>
-            <th>Order Id : </th>
-            <th>{{ $orders[0]->OrderId }}</th>
+            <th>Nama Kain </th>
+            <th>Jumlah Rol</th>
             <th></th>
             <th></th>
-            <th>{{ $orders[0]->Alamat }}</th>
+            <th></th>
         </tr>
+
         <tr>
-            <th>Tanggal : </th>
-            <th>{{ $orders[0]->Tanggal }}</th>
-            <th></th>
-            <th></th>
-            <th></th>
-        </tr>
-        
-        @foreach ($orders as $order)
-        <tr>
-            <th>Nama Kain : </th>
             <th>{{ $order->NamaKain }}</th>
-            <th></th>
-            <th>Jumlah Dalam Rol</th>
-            <th></th>
-        </tr>
-
-        <tr>
-            <th></th>
-            <th></th>
-            <th></th>
             <th>{{ $order->Jumlah }}</th>
             <th></th>
+            <th></th>
+            <th></th>
         </tr>
 
- 
         <tr>
             <td></td>
             <td></td>
@@ -73,13 +86,15 @@
             <td></td>
         </tr>
         @endforeach
+        
         <tr>
             <td></td>
             <td></td>
-            <td>Total : {{ $totals }}</td>
+            <td>Total</td>
             <td></td>
-            <td></td>
+            <td> {{ $order->Jumlah }}</td>
         </tr>
-                
-</table>
-            
+    </table>
+    </div>
+</div>
+<hr style="border: 1px solid red;">            
