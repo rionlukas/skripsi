@@ -6,6 +6,7 @@ use App\Http\Controllers\StockController;
 use App\Http\Controllers\PembelianController;
 use App\Http\Controllers\KainController;
 use App\Models\Kain;
+// use QrCode;
 
 /*
 |--------------------------------------------------------------------------
@@ -114,6 +115,15 @@ Route::get('/testing/playground', function(){
 Route::post('/testing/checkEOQ', 'TestingController@checkExistingEOQ')->name('testing_check_eoq');
 Route::get('/testing/token', function() {
     return csrf_token();
+});
+Route::get('testing/qrcode', function () {
+  
+    QrCode::size(500)
+            ->format('png')
+            ->generate('http://leonaldinata7.com/', public_path('images/qrcode.png'));
+    
+  return view('qrCode');
+    
 });
 
 
